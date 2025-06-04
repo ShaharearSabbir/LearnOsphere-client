@@ -20,7 +20,7 @@ const ProfileDropDown = (props) => {
   }, []);
 
   return (
-    <div className={`relative ${props.class}`}>
+    <div className={`relative z-10 ${props.class}`}>
       <div className="flex items-center space-x-4">
         <button
           ref={profileRef}
@@ -67,6 +67,7 @@ const NavBar = () => {
     { title: "Guides", path: "javascript:void(0)" },
     { title: "Partners", path: "javascript:void(0)" },
   ];
+  
   return (
     <nav className="bg-white border-b">
       <div className="flex items-center space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
@@ -94,7 +95,7 @@ const NavBar = () => {
             <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
           </div>
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
-            <ProfileDropDown class="hidden lg:block ml-1" />
+            <ProfileDropDown class="hidden lg:block" />
             <button
               className="outline-none text-gray-400 block lg:hidden"
               onClick={() => setMenuState(!menuState)}

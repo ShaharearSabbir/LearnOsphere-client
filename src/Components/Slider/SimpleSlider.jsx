@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import { SLIDES } from "../../Contents/slider";
+import { SLIDES } from "../../Contents/Contents";
 import Slide from "./Slide";
 
 const SimpleSlider = () => {
@@ -14,7 +14,7 @@ const SimpleSlider = () => {
     autoplaySpeed: 4000,
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container rounded-2xl overflow-hidden">
       <Slider {...settings}>
         {SLIDES.map((slide) => (
           <Slide {...slide} />

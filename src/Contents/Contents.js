@@ -1,3 +1,10 @@
+import {
+  FaRegCalendarAlt,
+  FaCloudDownloadAlt,
+  FaBookOpen,
+  FaHeadphonesAlt,
+} from "react-icons/fa";
+
 export const SLIDES = [
   {
     title: "Explore a Universe of Knowledge",
@@ -22,5 +29,28 @@ export const SLIDES = [
     img: "https://i.ibb.co/RpsVkLN3/grow.jpg",
     buttonText: "View Success Stories",
     buttonLink: "/success-stories",
+  },
+];
+
+export const FEATURES = [
+  {
+    title: "Flexible classes",
+    description: "You pick schedule.",
+    icon: FaRegCalendarAlt,
+  },
+  {
+    title: "Offline mode",
+    description: "Download classes.",
+    icon: FaCloudDownloadAlt,
+  },
+  {
+    title: "10k online courses",
+    description: "Explore a fresh topics.",
+    icon: FaBookOpen,
+  },
+  {
+    title: "Educator help",
+    description: "Always get answers.",
+    icon: FaHeadphonesAlt,
   },
 ];
