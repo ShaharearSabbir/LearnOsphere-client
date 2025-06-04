@@ -1,25 +1,28 @@
 import React from "react";
-import { Link } from "react-router";
-import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation } from "react-router";
+
+import { FaArrowLeft } from "react-icons/fa";
+import SocialLogin from "../../Components/Auth/SocialLogin";
+import AuthLogo from "../../Components/Auth/AuthLogo";
 
 const SignIn = () => {
+  const location = useLocation();
   return (
-    <div className="flex-1 flex items-center justify-center h-screen">
+    <div className="flex-1 flex items-center justify-center min-h-screen py-10">
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div className="">
-          <img
-            src="https://floatui.com/logo.svg"
-            width={150}
-            className="lg:hidden"
-          />
+          <AuthLogo />
           <div className="mt-5 space-y-2">
-            <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
-              Sign In
-            </h3>
+            <Link
+              to={location.state || "/"}
+              className="text-gray-800 text-2xl font-bold sm:text-3xl flex gap-2 mb-5 items-center"
+            >
+              <FaArrowLeft /> <span>Sign In</span>
+            </Link>
             <p className="">
               New Nere?{" "}
               <Link
-                to={"signup"}
+                to={"register"}
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Sign Up
@@ -28,9 +31,7 @@ const SignIn = () => {
           </div>
         </div>
         <div>
-          <button className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
-            <FcGoogle size={22} className="mr-1" /> Continue With Google
-          </button>
+          <SocialLogin />
         </div>
         <div className="relative">
           <span className="block w-full h-px bg-gray-300"></span>

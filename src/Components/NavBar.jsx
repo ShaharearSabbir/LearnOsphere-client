@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/LearnOsphere.png";
+import { AuthContext } from "../AuthContext/AuthContext";
 // Profile Dropdown
 const ProfileDropDown = (props) => {
   const [state, setState] = useState(false);
@@ -60,6 +61,9 @@ const ProfileDropDown = (props) => {
 const NavBar = () => {
   const [menuState, setMenuState] = useState(false);
 
+  const { name, user } = useContext(AuthContext);
+  console.log(name);
+
   // Replace javascript:void(0) path with your path
   const navigation = [
     { title: "Home", path: "/" },
@@ -67,10 +71,10 @@ const NavBar = () => {
     { title: "Guides", path: "javascript:void(0)" },
     { title: "Partners", path: "javascript:void(0)" },
   ];
-  
+
   return (
     <nav className="bg-white border-b">
-      <div className="flex items-center space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
+      <div className="flex items-center justify-between space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
         <div className="flex items-center gap-2">
           <Link to="/">
             <img src={logo} width={46} alt="Float UI logo" />
@@ -79,9 +83,9 @@ const NavBar = () => {
             Learn<span className="font-thin tracking-tighter">Osphere</span>
           </h1>
         </div>
-        <div className="flex-1 flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <div
-            className={`bg-white absolute z-20 w-full top-16 left-0 p-4 border-b lg:static lg:block lg:border-none ${
+            className={` absolute z-20 w-full top-16 left-0 p-4 border-b lg:static lg:block lg:border-none space-x-2 ${
               menuState ? "" : "hidden"
             }`}
           >
@@ -95,7 +99,18 @@ const NavBar = () => {
             <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
           </div>
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
-            <ProfileDropDown class="hidden lg:block" />
+            {!user ? (
+              <>
+                <Link className="btn btn-secondary" to="/auth/register">
+                  Register
+                </Link>
+                <Link className="btn btn-primary" to="/auth">
+                  Login
+                </Link>
+              </>
+            ) : (
+              <ProfileDropDown class="hidden lg:block" />
+            )}
             <button
               className="outline-none text-gray-400 block lg:hidden"
               onClick={() => setMenuState(!menuState)}
