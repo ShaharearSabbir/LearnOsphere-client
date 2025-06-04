@@ -10,7 +10,6 @@ const ProfileDropDown = (props) => {
   const navigation = [
     { title: "Dashboard", path: "javascript:void(0)" },
     { title: "Settings", path: "javascript:void(0)" },
-    { title: "Log out", path: "javascript:void(0)" },
   ];
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const ProfileDropDown = (props) => {
   }, []);
 
   return (
-    <div className={`relative z-10 ${props.class}`}>
+    <div className={`relative z-10 bg-white ${props.class}`}>
       <div className="flex items-center space-x-4">
         <button
           ref={profileRef}
@@ -29,13 +28,15 @@ const ProfileDropDown = (props) => {
           onClick={() => setState(!state)}
         >
           <img
-            src="https://randomuser.me/api/portraits/men/46.jpg"
+            src={props.user?.photoURL}
             className="w-full h-full rounded-full"
           />
         </button>
         <div className="lg:hidden">
-          <span className="block">Micheal John</span>
-          <span className="block text-sm text-gray-500">john@gmail.com</span>
+          <span className="block">{props.user?.displayName}</span>
+          <span className="block text-sm text-gray-500">
+            {props.user?.email}
+          </span>
         </div>
       </div>
       <ul
@@ -54,15 +55,28 @@ const ProfileDropDown = (props) => {
             </a>
           </li>
         ))}
+        <li>
+          <button
+            onClick={props.logOut}
+            className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5 w-full text-left"
+          >
+            LogOut
+          </button>
+        </li>
       </ul>
     </div>
   );
 };
 const NavBar = () => {
+  const { name, user, logOut, setUser } = useContext(AuthContext);
   const [menuState, setMenuState] = useState(false);
+  console.log(user);
 
-  const { name, user } = useContext(AuthContext);
-  console.log(name);
+  const handleSignOut = () => {
+    logOut().then(() => {
+      setUser(null);
+    });
+  };
 
   // Replace javascript:void(0) path with your path
   const navigation = [
@@ -96,7 +110,11 @@ const NavBar = () => {
                 </li>
               ))}
             </ul>
-            <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
+            <ProfileDropDown
+              user={user}
+              logOut={handleSignOut}
+              class="mt-5 pt-5 border-t lg:hidden"
+            />
           </div>
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
             {!user ? (
@@ -109,7 +127,11 @@ const NavBar = () => {
                 </Link>
               </>
             ) : (
-              <ProfileDropDown class="hidden lg:block" />
+              <ProfileDropDown
+                user={user}
+                logOut={handleSignOut}
+                class="hidden lg:block"
+              />
             )}
             <button
               className="outline-none text-gray-400 block lg:hidden"

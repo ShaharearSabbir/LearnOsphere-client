@@ -1,12 +1,25 @@
-import React, { useContext } from "react";
-import { Link, useLocation } from "react-router";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { FaArrowLeft } from "react-icons/fa";
 import AuthLogo from "../../Components/Auth/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import { uploadImage } from "../../Utils/Utilities";
+import axios from "axios";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, setUser } = useContext(AuthContext);
+  const [photoURL, setPhotoURL] = useState(null);
+  const navigate = useNavigate();
+
+  const handleImage = async (e) => {
+    const image = e.target.files[0];
+    if (image) {
+      const display_url = await uploadImage(image);
+      setPhotoURL(display_url);
+    }
+  };
+
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,7 +28,24 @@ const SignUp = () => {
     const { email, password, ...userData } = formEntries;
     createUser(email, password)
       .then((currentUser) => {
-        console.log(currentUser.user);
+        if (currentUser.user.email) {
+          userData.email = currentUser.user.email;
+          userData.uid = currentUser.user.uid;
+          delete userData.image;
+          userData.photoURL = photoURL;
+          axios
+            .post("http://localhost:3000/user", userData)
+            .then((res) => {
+              if (res.data.insertedId) {
+                console.log("Profile Updated");
+                setUser({ ...currentUser.user, ...userData });
+                navigate("/");
+              } else {
+                console.log("Error Updating Data");
+              }
+            })
+            .catch((err) => console.log(err));
+        }
       })
       .catch((err) => console.log(err.message));
   };
@@ -73,7 +103,7 @@ const SignUp = () => {
           <div>
             <label className="font-medium">Name</label>
             <input
-              name="name"
+              name="displayName"
               type="text"
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
@@ -83,6 +113,7 @@ const SignUp = () => {
           <div>
             <label className="font-medium">Photo</label>
             <input
+              onChange={handleImage}
               name="image"
               type="file"
               required

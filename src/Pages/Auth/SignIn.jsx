@@ -1,12 +1,28 @@
-import React from "react";
-import { Link, useLocation } from "react-router";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import { FaArrowLeft } from "react-icons/fa";
 import SocialLogin from "../../Components/Auth/SocialLogin";
 import AuthLogo from "../../Components/Auth/AuthLogo";
+import { AuthContext } from "../../AuthContext/AuthContext";
 
 const SignIn = () => {
+  const { loginUSer } = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    loginUSer(email, password)
+      .then(() => {
+        console.log("Logged in");
+        navigate(location.state || "/");
+      })
+      .catch((err) => console.log(err.message));
+  };
+
   return (
     <div className="flex-1 flex items-center justify-center min-h-screen py-10">
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
@@ -39,10 +55,11 @@ const SignIn = () => {
             Or continue with
           </p>
         </div>
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+        <form onSubmit={handleSignIn} className="space-y-5">
           <div>
             <label className="font-medium">Email</label>
             <input
+              name="email"
               type="email"
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
@@ -51,13 +68,14 @@ const SignIn = () => {
           <div>
             <label className="font-medium">Password</label>
             <input
+              name="password"
               type="password"
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
             />
           </div>
           <button className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
-            Create account
+            Login
           </button>
         </form>
       </div>
