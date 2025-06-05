@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 
 import { FaArrowLeft } from "react-icons/fa";
-import SocialLogin from "../../Components/Auth/SocialLogin";
-import AuthLogo from "../../Components/Auth/AuthLogo";
+import SocialLogin from "../../Components/AuthComponents/SocialLogin";
+import AuthLogo from "../../Components/AuthComponents/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast } from "../../Utils/Utilities";
 
 const SignIn = () => {
-  const { loginUSer } = useContext(AuthContext);
+  const { loginUSer, user } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,6 +18,10 @@ const SignIn = () => {
     const password = e.target.password.value;
     loginUSer(email, password)
       .then(() => {
+        Toast.fire({
+          icon: "success",
+          title: `Welcome Back ${user ? user.displayName : "Dear"}!`,
+        });
         navigate(location.state || "/");
       })
       .catch((err) => {
@@ -52,7 +56,7 @@ const SignIn = () => {
           </div>
         </div>
         <div>
-          <SocialLogin />
+          <SocialLogin location={location} />
         </div>
         <div className="relative">
           <span className="block w-full h-px bg-gray-300"></span>

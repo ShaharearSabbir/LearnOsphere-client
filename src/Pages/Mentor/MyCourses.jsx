@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLoaderData, useLocation } from "react-router";
-import MyCourseTableRow from "../../Components/Mentor/MyCourseTableRow";
+import MyCourseTableRow from "../../Components/MentorComponents/MyCourseTableRow";
 
 const MyCourses = () => {
   const location = useLocation();

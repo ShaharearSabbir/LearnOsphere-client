@@ -4,16 +4,18 @@ import MainHome from "../Pages/Main/MainHome";
 import AuthLayout from "../Layouts/AuthLayout";
 import SignIn from "../Pages/Auth/SignIn";
 import SignUp from "../Pages/Auth/SignUp";
-import PrivateRoute from "../Components/Auth/PrivateRoute";
+import PrivateRoute from "../Components/AuthComponents/PrivateRoute";
 import AddCourse from "../Pages/Mentor/AddCourse";
 import MyCourses from "../Pages/Mentor/MyCourses";
 import axios from "axios";
 import UpdateCourse from "../Pages/Mentor/UpdateCourse";
+import Loader from "../Components/SharedComponents/Loader";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    hydrateFallbackElement: <Loader />,
     children: [
       { index: true, Component: MainHome },
       {

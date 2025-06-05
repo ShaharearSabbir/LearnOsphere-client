@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
-import { SLIDES } from "../../Contents/Contents";
+
 import Slide from "./Slide";
+import { SLIDES } from "../../../Contents/Contents";
 
 const SimpleSlider = () => {
   const settings = {

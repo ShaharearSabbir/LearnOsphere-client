@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Toast, uploadImage } from "../../Utils/Utilities";
-import AddItemModal from "../../Components/Mentor/AddItemModal";
+import AddItemModal from "../../Components/MentorComponents/AddItemModal";
 import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import Swal from "sweetalert2";

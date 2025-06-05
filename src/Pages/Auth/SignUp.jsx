@@ -2,15 +2,17 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { FaArrowLeft } from "react-icons/fa";
-import AuthLogo from "../../Components/Auth/AuthLogo";
+import AuthLogo from "../../Components/AuthComponents/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast, uploadImage } from "../../Utils/Utilities";
 import axios from "axios";
+import SocialLogin from "../../Components/AuthComponents/SocialLogin";
 
 const SignUp = () => {
   const { createUser, setUser } = useContext(AuthContext);
   const [photoURL, setPhotoURL] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleImage = async (e) => {
     const image = e.target.files[0];
@@ -65,8 +67,6 @@ const SignUp = () => {
         });
       });
   };
-
-  const location = useLocation();
   return (
     <div className="flex-1 flex items-center justify-center min-h-screen py-10 lg:py-20">
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
@@ -91,9 +91,7 @@ const SignUp = () => {
           </div>
         </div>
         <div>
-          <button className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
-            <FcGoogle size={22} className="mr-1" /> Continue With Google
-          </button>
+          <SocialLogin location={location} />
         </div>
         <div className="relative">
           <span className="block w-full h-px bg-gray-300"></span>

@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router";
-import logo from "../assets/LearnOsphere.png";
-import { AuthContext } from "../AuthContext/AuthContext";
-import { Toast } from "../Utils/Utilities";
+import logo from "../../assets/LearnOsphere.png";
+import { AuthContext } from "../../AuthContext/AuthContext";
+import { Toast } from "../../Utils/Utilities";
 // Profile Dropdown
 const ProfileDropDown = (props) => {
   const [state, setState] = useState(false);
@@ -78,7 +78,7 @@ const NavBar = () => {
       setUser(null);
       Toast.fire({
         icon: "warning",
-        title: `Signed Out`,
+        title: `See You Again ${user.displayName}`,
       });
     });
   };
@@ -98,7 +98,7 @@ const NavBar = () => {
           <Link to="/">
             <img src={logo} width={46} alt="Float UI logo" />
           </Link>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-5xl text-blue-600 font-extrabold hidden md:inline">
             Learn<span className="font-thin tracking-tighter">Osphere</span>
           </h1>
         </div>

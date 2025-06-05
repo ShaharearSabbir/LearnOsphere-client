@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
-import Loader from "../Loader";
+import Loader from "../SharedComponents/Loader";
 import { Navigate, useLocation } from "react-router";
 import { div } from "motion/react-client";
 

@@ -20,7 +20,10 @@ const Slide = ({ title, description, img, buttonText, buttonLink }) => {
           whileInView={{ y: [0, 2, 0, -2, 0] }}
           transition={{ duration: 1, repeat: Infinity }}
         >
-          <Link className="btn btn-secondary w-fit mx-auto" to={buttonLink}>
+          <Link
+            className="btn btn-secondary w-fit mx-auto"
+            to={buttonLink}
+          >
             {buttonText}
           </Link>
         </motion.div>

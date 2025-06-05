@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
-
-
+body {
+    font-family: "Inter", sans-serif;
+}
 
 .btn {
-    @apply px-5 py-2 rounded text-white
+    @apply px-5 py-2 rounded-lg text-white w-fit h-fit
 }
 
 .btn-secondary {

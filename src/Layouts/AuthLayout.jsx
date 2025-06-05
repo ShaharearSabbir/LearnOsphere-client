@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 
-import AuthLogo from "../Components/Auth/AuthLogo";
+import AuthLogo from "../Components/AuthComponents/AuthLogo";
 
 const AuthLayout = () => {
   return (
