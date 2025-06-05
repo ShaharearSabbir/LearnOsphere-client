@@ -8,6 +8,7 @@ import PrivateRoute from "../Components/Auth/PrivateRoute";
 import AddCourse from "../Pages/Mentor/AddCourse";
 import MyCourses from "../Pages/Mentor/MyCourses";
 import axios from "axios";
+import UpdateCourse from "../Pages/Mentor/UpdateCourse";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
         path: "addCourse",
         element: (
           <PrivateRoute>
-            <AddCourse></AddCourse>
+            <AddCourse />
           </PrivateRoute>
         ),
       },
@@ -29,7 +30,17 @@ export const router = createBrowserRouter([
           axios(`http://localhost:3000/courses/${params.uid}`),
         element: (
           <PrivateRoute>
-            <MyCourses></MyCourses>
+            <MyCourses />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "updateCourse/:id",
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/course/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateCourse />
           </PrivateRoute>
         ),
       },
