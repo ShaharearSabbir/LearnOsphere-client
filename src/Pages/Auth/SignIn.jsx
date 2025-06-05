@@ -5,6 +5,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import SocialLogin from "../../Components/Auth/SocialLogin";
 import AuthLogo from "../../Components/Auth/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import { Toast } from "../../Utils/Utilities";
 
 const SignIn = () => {
   const { loginUSer } = useContext(AuthContext);
@@ -17,10 +18,14 @@ const SignIn = () => {
     const password = e.target.password.value;
     loginUSer(email, password)
       .then(() => {
-        console.log("Logged in");
         navigate(location.state || "/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: `${err.message}`,
+        });
+      });
   };
 
   return (

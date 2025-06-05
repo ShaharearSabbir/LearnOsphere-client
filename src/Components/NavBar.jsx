@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/LearnOsphere.png";
 import { AuthContext } from "../AuthContext/AuthContext";
+import { Toast } from "../Utils/Utilities";
 // Profile Dropdown
 const ProfileDropDown = (props) => {
   const [state, setState] = useState(false);
@@ -75,6 +76,10 @@ const NavBar = () => {
   const handleSignOut = () => {
     logOut().then(() => {
       setUser(null);
+      Toast.fire({
+        icon: "warning",
+        title: `Signed Out`,
+      });
     });
   };
 

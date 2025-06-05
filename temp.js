@@ -67,6 +67,7 @@ const courses = [
       "State Management",
     ],
     seat: 50,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -79,6 +80,7 @@ const courses = [
     free: false,
     topics: ["Node.js", "Express.js", "MongoDB", "Backend Development", "API"],
     seat: 45,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -98,6 +100,7 @@ const courses = [
       "Web Development",
     ],
     seat: 30,
+    courseDuration: 60, // Added course duration
     dynamicItems: [],
   },
   {
@@ -110,6 +113,7 @@ const courses = [
     free: true,
     topics: ["HTML5", "CSS3", "Web Design", "Frontend Basics"],
     seat: 100,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -122,6 +126,7 @@ const courses = [
     free: false,
     topics: ["JavaScript", "ES6+", "Asynchronous JavaScript", "Prototypes"],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -134,6 +139,7 @@ const courses = [
     free: false,
     topics: ["Bootstrap 5", "Responsive Design", "CSS Frameworks", "Frontend"],
     seat: 70,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
   {
@@ -146,6 +152,7 @@ const courses = [
     free: false,
     topics: ["PWA", "Service Workers", "Web Manifest", "Offline Capabilities"],
     seat: 40,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
 
@@ -160,6 +167,7 @@ const courses = [
     free: false,
     topics: ["Python", "Pandas", "NumPy", "Matplotlib", "Data Analysis"],
     seat: 55,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -178,6 +186,7 @@ const courses = [
       "Python",
     ],
     seat: 35,
+    courseDuration: 30, // Added course duration
     dynamicItems: [],
   },
   {
@@ -190,6 +199,7 @@ const courses = [
     free: false,
     topics: ["D3.js", "Data Visualization", "JavaScript", "SVG", "Web Data"],
     seat: 40,
+    courseDuration: 22, // Added course duration
     dynamicItems: [],
   },
   {
@@ -207,6 +217,7 @@ const courses = [
       "Relational Databases",
     ],
     seat: 65,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -224,6 +235,7 @@ const courses = [
       "Distributed Computing",
     ],
     seat: 30,
+    courseDuration: 28, // Added course duration
     dynamicItems: [],
   },
   {
@@ -241,6 +253,7 @@ const courses = [
       "Statistics",
     ],
     seat: 80,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -253,6 +266,7 @@ const courses = [
     free: false,
     topics: ["NLP", "Text Processing", "Linguistics", "Machine Learning"],
     seat: 45,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
 
@@ -272,6 +286,7 @@ const courses = [
       "Branding",
     ],
     seat: 70,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -289,6 +304,7 @@ const courses = [
       "Facebook Ads",
     ],
     seat: 60,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
   {
@@ -306,6 +322,7 @@ const courses = [
       "Google Rankings",
     ],
     seat: 55,
+    courseDuration: 14, // Added course duration
     dynamicItems: [],
   },
   {
@@ -323,6 +340,7 @@ const courses = [
       "Audience Engagement",
     ],
     seat: 45,
+    courseDuration: 16, // Added course duration
     dynamicItems: [],
   },
   {
@@ -335,6 +353,7 @@ const courses = [
     free: false,
     topics: ["Email Marketing", "Automation", "CRM", "Lead Nurturing"],
     seat: 50,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
   {
@@ -347,6 +366,7 @@ const courses = [
     free: false,
     topics: ["Google Ads", "PPC", "Paid Advertising", "Campaign Management"],
     seat: 40,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -364,6 +384,7 @@ const courses = [
       "Campaign Measurement",
     ],
     seat: 35,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
 
@@ -383,6 +404,7 @@ const courses = [
       "Retouching",
     ],
     seat: 60,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -400,6 +422,7 @@ const courses = [
       "Illustration",
     ],
     seat: 55,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -412,6 +435,7 @@ const courses = [
     free: false,
     topics: ["UI Design", "UX Design", "Figma", "Wireframing", "Prototyping"],
     seat: 40,
+    courseDuration: 30, // Added course duration
     dynamicItems: [],
   },
   {
@@ -429,6 +453,7 @@ const courses = [
       "Visual Hierarchy",
     ],
     seat: 70,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -446,6 +471,7 @@ const courses = [
       "Digital Publishing",
     ],
     seat: 45,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
   {
@@ -458,6 +484,7 @@ const courses = [
     free: false,
     topics: ["After Effects", "Motion Graphics", "Animation", "Video Editing"],
     seat: 30,
+    courseDuration: 35, // Added course duration
     dynamicItems: [],
   },
 
@@ -472,6 +499,7 @@ const courses = [
     free: false,
     topics: ["Project Management", "PMP Certification", "Agile", "Scrum"],
     seat: 25,
+    courseDuration: 40, // Added course duration
     dynamicItems: [],
   },
   {
@@ -484,6 +512,7 @@ const courses = [
     free: false,
     topics: ["Entrepreneurship", "E-commerce", "Business Plan", "Startup"],
     seat: 40,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -496,6 +525,7 @@ const courses = [
     free: false,
     topics: ["Accounting", "Finance", "Balance Sheets", "Income Statements"],
     seat: 50,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -508,6 +538,7 @@ const courses = [
     free: false,
     topics: ["Leadership", "Management", "Team Building", "Communication"],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -525,6 +556,7 @@ const courses = [
       "Deal Making",
     ],
     seat: 55,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
   {
@@ -542,6 +574,7 @@ const courses = [
       "Business Strategy",
     ],
     seat: 30,
+    courseDuration: 28, // Added course duration
     dynamicItems: [],
   },
 
@@ -556,6 +589,7 @@ const courses = [
     free: false,
     topics: ["Photography", "Camera Basics", "Composition", "Lighting"],
     seat: 80,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -573,6 +607,7 @@ const courses = [
       "Outdoor Portraits",
     ],
     seat: 50,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -590,6 +625,7 @@ const courses = [
       "Nature Photography",
     ],
     seat: 45,
+    courseDuration: 22, // Added course duration
     dynamicItems: [],
   },
   {
@@ -607,6 +643,7 @@ const courses = [
       "Composition",
     ],
     seat: 100,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -624,6 +661,7 @@ const courses = [
       "Photojournalism",
     ],
     seat: 60,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
   {
@@ -641,6 +679,7 @@ const courses = [
       "Post-production",
     ],
     seat: 35,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
 
@@ -661,6 +700,7 @@ const courses = [
       "Electronic Music",
     ],
     seat: 30,
+    courseDuration: 30, // Added course duration
     dynamicItems: [],
   },
   {
@@ -673,6 +713,7 @@ const courses = [
     free: false,
     topics: ["Songwriting", "Music Theory", "Composition", "Harmony"],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -685,6 +726,7 @@ const courses = [
     free: false,
     topics: ["Logic Pro X", "Mixing", "Mastering", "Audio Engineering", "DAW"],
     seat: 40,
+    courseDuration: 28, // Added course duration
     dynamicItems: [],
   },
   {
@@ -696,6 +738,7 @@ const courses = [
     free: false,
     topics: ["Sound Design", "Synthesizers", "Audio Effects", "Foley"],
     seat: 50,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -713,6 +756,7 @@ const courses = [
       "Audio Engineering",
     ],
     seat: 45,
+    courseDuration: 22, // Added course duration
     dynamicItems: [],
   },
   {
@@ -731,6 +775,7 @@ const courses = [
       "Digital Synths",
     ],
     seat: 35,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
 
@@ -750,6 +795,7 @@ const courses = [
       "Dietary Guidelines",
     ],
     seat: 70,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -762,6 +808,7 @@ const courses = [
     free: true,
     topics: ["Yoga", "Beginner Yoga", "Mindfulness", "Flexibility"],
     seat: 90,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -774,6 +821,7 @@ const courses = [
     free: false,
     topics: ["HIIT", "Cardio", "Strength Training", "Home Workouts"],
     seat: 80,
+    courseDuration: 8, // Added course duration
     dynamicItems: [],
   },
   {
@@ -786,6 +834,7 @@ const courses = [
     free: false,
     topics: ["Mindfulness", "Meditation", "Stress Reduction", "Mental Health"],
     seat: 75,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
   {
@@ -803,6 +852,7 @@ const courses = [
       "Fitness",
     ],
     seat: 65,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -820,11 +870,9 @@ const courses = [
       "Integrative Health",
     ],
     seat: 50,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
-
-  // Remaining courses to reach 50 (distribute among categories or create new ones)
-  // Let's add more to existing categories for diversity
 
   // Web Development (adds 3 more)
   {
@@ -837,6 +885,7 @@ const courses = [
     free: false,
     topics: ["Vue.js", "Frontend Development", "JavaScript Framework", "SPA"],
     seat: 50,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -849,6 +898,7 @@ const courses = [
     free: false,
     topics: ["Gatsby.js", "React", "GraphQL", "Static Site Generator"],
     seat: 40,
+    courseDuration: 16, // Added course duration
     dynamicItems: [],
   },
   {
@@ -867,6 +917,7 @@ const courses = [
       "Cybersecurity",
     ],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
 
@@ -880,6 +931,7 @@ const courses = [
     free: false,
     topics: ["Deep Learning", "Keras", "TensorFlow", "Neural Networks", "AI"],
     seat: 30,
+    courseDuration: 35, // Added course duration
     dynamicItems: [],
   },
   {
@@ -892,6 +944,7 @@ const courses = [
     free: false,
     topics: ["Time Series", "Forecasting", "Python", "StatsModels", "ARIMA"],
     seat: 40,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -904,6 +957,7 @@ const courses = [
     free: false,
     topics: ["Data Ethics", "Data Privacy", "GDPR", "Responsible AI"],
     seat: 50,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
 
@@ -918,6 +972,7 @@ const courses = [
     free: false,
     topics: ["Marketing Analytics", "Data Analysis", "Google Analytics", "ROI"],
     seat: 45,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
   {
@@ -935,6 +990,7 @@ const courses = [
       "Brand Identity",
     ],
     seat: 55,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -952,6 +1008,7 @@ const courses = [
       "Reputation Management",
     ],
     seat: 60,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
 
@@ -965,6 +1022,7 @@ const courses = [
     free: false,
     topics: ["Figma", "UI Design", "Collaboration Tools", "Prototyping"],
     seat: 65,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -982,6 +1040,7 @@ const courses = [
       "Adobe Illustrator",
     ],
     seat: 40,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -994,6 +1053,7 @@ const courses = [
     free: false,
     topics: ["Blender", "3D Modeling", "Sculpting", "Rendering", "Animation"],
     seat: 35,
+    courseDuration: 30, // Added course duration
     dynamicItems: [],
   },
 
@@ -1013,6 +1073,7 @@ const courses = [
       "Interpersonal Skills",
     ],
     seat: 70,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1031,6 +1092,7 @@ const courses = [
       "Reporting",
     ],
     seat: 80,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1048,6 +1110,7 @@ const courses = [
       "Training & Development",
     ],
     seat: 50,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
 
@@ -1067,6 +1130,7 @@ const courses = [
       "Photo Organization",
     ],
     seat: 50,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1079,6 +1143,7 @@ const courses = [
     free: false,
     topics: ["Astrophotography", "Night Sky", "Telescopes", "Star Trails"],
     seat: 30,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1096,6 +1161,7 @@ const courses = [
       "UAV",
     ],
     seat: 25,
+    courseDuration: 30, // Added course duration
     dynamicItems: [],
   },
 
@@ -1110,6 +1176,7 @@ const courses = [
     free: false,
     topics: ["Guitar", "Beginner Guitar", "Chords", "Strumming"],
     seat: 70,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1122,6 +1189,7 @@ const courses = [
     free: false,
     topics: ["FL Studio", "Beat Making", "Music Production Software", "DAW"],
     seat: 50,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1134,6 +1202,7 @@ const courses = [
     free: false,
     topics: ["Live Sound", "Audio Mixing", "Sound Systems", "PA Systems"],
     seat: 40,
+    courseDuration: 20, // Added course duration
     dynamicItems: [],
   },
 
@@ -1148,6 +1217,7 @@ const courses = [
     free: false,
     topics: ["Weight Loss", "Healthy Habits", "Diet", "Exercise"],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1160,6 +1230,7 @@ const courses = [
     free: false,
     topics: ["Pilates", "Core Strength", "Flexibility", "Posture"],
     seat: 70,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1172,11 +1243,10 @@ const courses = [
     free: false,
     topics: ["Running", "5K Training", "Cardio", "Endurance"],
     seat: 85,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
 
-  // New Categories or further distribution to reach 50
-  // Adding a new category "Languages" and "Personal Development" to fill the remaining
   // Languages (5 courses)
   {
     title: "Spanish for Travelers",
@@ -1188,6 +1258,7 @@ const courses = [
     free: false,
     topics: ["Spanish", "Travel Phrases", "Culture", "Beginner Language"],
     seat: 70,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1200,6 +1271,7 @@ const courses = [
     free: false,
     topics: ["French", "Grammar", "Conversation", "Language Learning"],
     seat: 50,
+    courseDuration: 30, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1217,6 +1289,7 @@ const courses = [
       "Negotiation",
     ],
     seat: 40,
+    courseDuration: 25, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1229,6 +1302,7 @@ const courses = [
     free: false,
     topics: ["German", "Fluency", "Idioms", "Advanced Grammar"],
     seat: 35,
+    courseDuration: 28, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1241,6 +1315,7 @@ const courses = [
     free: false,
     topics: ["Japanese", "Hiragana", "Katakana", "Writing System"],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
 
@@ -1255,6 +1330,7 @@ const courses = [
     free: false,
     topics: ["Time Management", "Productivity", "Goal Setting", "Organization"],
     seat: 70,
+    courseDuration: 10, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1272,6 +1348,7 @@ const courses = [
       "Communication",
     ],
     seat: 50,
+    courseDuration: 18, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1289,6 +1366,7 @@ const courses = [
       "Social Skills",
     ],
     seat: 60,
+    courseDuration: 15, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1306,6 +1384,7 @@ const courses = [
       "Brainstorming",
     ],
     seat: 55,
+    courseDuration: 12, // Added course duration
     dynamicItems: [],
   },
   {
@@ -1318,6 +1397,7 @@ const courses = [
     free: false,
     topics: ["Habit Formation", "Self-Improvement", "Discipline", "Well-being"],
     seat: 80,
+    courseDuration: 8, // Added course duration
     dynamicItems: [],
   },
 ];

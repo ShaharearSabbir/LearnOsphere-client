@@ -35,7 +35,11 @@ const MyCourses = () => {
             </thead>
             <tbody className="text-gray-600 divide-y">
               {courses.map((course, idx) => (
-                <MyCourseTableRow course={course} idx={idx} />
+                <MyCourseTableRow
+                  course={course}
+                  setCourses={setCourses}
+                  idx={idx}
+                />
               ))}
             </tbody>
           </table>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { uploadImage } from "../../Utils/Utilities";
+import { Toast, uploadImage } from "../../Utils/Utilities";
 import axios from "axios";
 
 const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
@@ -23,12 +23,20 @@ const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
       .then((res) => {
         if (res.data.insertedId) {
           setNewCategory(newCategory);
-          console.log("Success");
+          Toast.fire({
+            icon: "success",
+            title: `Successfully Added Category`,
+          });
         }
         e.target.reset();
         onClose();
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: `${err.message}`,
+        });
+      });
   };
 
   if (!isOpen) {

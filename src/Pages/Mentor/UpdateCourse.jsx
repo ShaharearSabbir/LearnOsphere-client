@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
-import { uploadImage } from "../../Utils/Utilities";
+import { Toast, uploadImage } from "../../Utils/Utilities";
 import AddItemModal from "../../Components/Mentor/AddItemModal";
 import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const UpdateCourse = () => {
   const course = useLoaderData().data;
@@ -19,10 +20,14 @@ const UpdateCourse = () => {
   useEffect(() => {
     axios("http://localhost:3000/categories")
       .then((res) => {
-        console.log(res.data);
         setCategories(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: "Problem Loading Categories",
+        });
+      });
 
     axios;
   }, []);
@@ -38,45 +43,66 @@ const UpdateCourse = () => {
 
   const handleUpdateCourse = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    let courseData = Object.fromEntries(formData.entries());
 
-    courseData.topics = courseData.topics
-      .split(",")
-      .map((topic) => topic.trim())
-      .filter((topic) => topic !== "");
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        const form = e.target;
+        const formData = new FormData(form);
+        let courseData = Object.fromEntries(formData.entries());
 
-    delete courseData.image;
-    if (photoURL) {
-      courseData.photoURL = photoURL;
-    }
+        courseData.topics = courseData.topics
+          .split(",")
+          .map((topic) => topic.trim())
+          .filter((topic) => topic !== "");
 
-    if (courseData.free) {
-      courseData.free = courseData.free === "on" && true;
-    } else {
-      const { currency, discountedPrice, regularPrice, ...courseData2 } =
-        courseData;
-      courseData2.price = { currency, discountedPrice, regularPrice };
-      courseData = courseData2;
-    }
-    courseData.mentorName = user.displayName;
-    courseData.mentorEmail = user.email;
-    courseData.mentorUID = user.uid;
-    courseData.RemainingSeat = courseData.totalSeat;
-    console.log(courseData);
-    axios
-      .put(`http://localhost:3000/course/${course._id}`, courseData)
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          console.log("Success");
-          form.reset();
-          setPhotoURL(null);
-          setPhotoUploaded(false);
-          navigate(location.state);
+        delete courseData.image;
+        if (photoURL) {
+          courseData.photoURL = photoURL;
         }
-      })
-      .catch((err) => console.log(err.message));
+
+        if (courseData.free) {
+          courseData.free = courseData.free === "on" && true;
+        } else {
+          const { currency, discountedPrice, regularPrice, ...courseData2 } =
+            courseData;
+          courseData2.price = { currency, discountedPrice, regularPrice };
+          courseData = courseData2;
+        }
+        courseData.mentorName = user.displayName;
+        courseData.mentorEmail = user.email;
+        courseData.mentorUID = user.uid;
+        courseData.RemainingSeat = courseData.totalSeat;
+        axios
+          .put(`http://localhost:3000/course/${course._id}`, courseData)
+          .then((res) => {
+            if (res.data.modifiedCount) {
+              Toast.fire({
+                icon: "success",
+                title: "Successfully Updated",
+              });
+              form.reset();
+              setPhotoURL(null);
+              setPhotoUploaded(false);
+              navigate(location.state);
+            }
+          })
+          .catch((err) => {
+            Toast.fire({
+              icon: "error",
+              title: `${err.message}`,
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   };
 
   return (
@@ -123,6 +149,23 @@ const UpdateCourse = () => {
               required
               rows="3"
               placeholder="Enter Course Description"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="courseTitle"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Course Duration
+            </label>
+            <input
+              type="number"
+              name="duration"
+              defaultValue={course.duration}
+              required
+              placeholder="Enter Course Duration"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>

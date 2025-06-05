@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaArrowLeft } from "react-icons/fa";
 import AuthLogo from "../../Components/Auth/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
-import { uploadImage } from "../../Utils/Utilities";
+import { Toast, uploadImage } from "../../Utils/Utilities";
 import axios from "axios";
 
 const SignUp = () => {
@@ -37,17 +37,33 @@ const SignUp = () => {
             .post("http://localhost:3000/user", userData)
             .then((res) => {
               if (res.data.insertedId) {
-                console.log("Profile Updated");
+                Toast.fire({
+                  icon: "success",
+                  title: "Account Created",
+                });
                 setUser({ ...currentUser.user, ...userData });
                 navigate("/");
               } else {
-                console.log("Error Updating Data");
+                Toast.fire({
+                  icon: "error",
+                  title: "Error Updating Data",
+                });
               }
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+              Toast.fire({
+                icon: "error",
+                title: `${err.message}`,
+              });
+            });
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: `${err.message}`,
+        });
+      });
   };
 
   const location = useLocation();

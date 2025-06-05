@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
-import { Link, useLocation } from "react-router";
-import { uploadImage } from "../../Utils/Utilities";
+import { Link, useLocation, useNavigate } from "react-router";
+import { Toast, uploadImage } from "../../Utils/Utilities";
 import AddItemModal from "../../Components/Mentor/AddItemModal";
 import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const AddCourse = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [free, setFree] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
@@ -18,10 +20,14 @@ const AddCourse = () => {
   useEffect(() => {
     axios("http://localhost:3000/categories")
       .then((res) => {
-        console.log(res.data);
         setCategories(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        Toast.fire({
+          icon: "error",
+          title: "Problem Loading Categories",
+        });
+      });
   }, []);
 
   useEffect(() => {
@@ -70,12 +76,30 @@ const AddCourse = () => {
       .post("http://localhost:3000/course", courseData)
       .then((res) => {
         if (res.data.insertedId) {
-          console.log("Success");
           form.reset();
           setPhotoURL(null);
+          Swal.fire({
+            title: "Course Added Successfully",
+            text: "Do you Wanna add another course?",
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "No",
+            confirmButtonText: "Yes",
+          }).then((result) => {
+            if (!result.isConfirmed) {
+              navigate(`/myCourses/${user.uid}`);
+            }
+          });
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: `${err.message}`,
+        });
+      });
   };
 
   return (
@@ -121,6 +145,22 @@ const AddCourse = () => {
               required
               rows="3"
               placeholder="Enter Course Description"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="courseTitle"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Course Duration
+            </label>
+            <input
+              type="number"
+              name="duration"
+              required
+              placeholder="Course Duration"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>

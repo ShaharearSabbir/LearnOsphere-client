@@ -1,10 +1,26 @@
 import axios from "axios";
 import React from "react";
 import { Link, useLocation } from "react-router";
+import { Toast } from "../../Utils/Utilities";
 
-const MyCourseTableRow = ({ course, idx }) => {
-
-
+const MyCourseTableRow = ({ course, idx, setCourses }) => {
+  const handleDeleteCourse = (id) => {
+    axios
+      .delete(`http://localhost:3000/course/${id}`)
+      .then((res) => {
+        if (res.data.deletedCount) {
+          setCourses((prevCourses) =>
+            prevCourses.filter((course) => course._id !== id)
+          );
+        }
+      })
+      .catch((err) => {
+        Toast.fire({
+          icon: "error",
+          title: `${err.message}`,
+        });
+      });
+  };
 
   const location = useLocation();
   return (
@@ -39,7 +55,7 @@ const MyCourseTableRow = ({ course, idx }) => {
           Edit
         </Link>
         <button
-          href="javascript:void()"
+          onClick={() => handleDeleteCourse(course._id)}
           className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
         >
           Delete
