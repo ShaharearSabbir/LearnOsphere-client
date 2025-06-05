@@ -109,6 +109,11 @@ const NavBar = () => {
                   <NavLink href={item.path}>{item.title}</NavLink>
                 </li>
               ))}
+              {user?.role === "mentor" && (
+                <li className="text-gray-600 hover:text-gray-900">
+                  <NavLink to="/addCourse">Add Course</NavLink>
+                </li>
+              )}
             </ul>
             <ProfileDropDown
               user={user}
