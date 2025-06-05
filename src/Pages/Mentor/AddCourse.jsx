@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { uploadImage } from "../../Utils/Utilities";
-import AddItemModal from "./AddItemModal";
+import AddItemModal from "../../Components/Mentor/AddItemModal";
 import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
 
 const AddCourse = () => {
+  const location = useLocation();
   const { user } = useContext(AuthContext);
   const [free, setFree] = useState(false);
   const [photoURL, setPhotoURL] = useState(null);
@@ -63,11 +64,15 @@ const AddCourse = () => {
     }
     courseData.mentorName = user.displayName;
     courseData.mentorEmail = user.email;
+    courseData.mentorUID = user.uid;
+    courseData.RemainingSeat = courseData.totalSeat
     axios
       .post("http://localhost:3000/course", courseData)
       .then((res) => {
         if (res.data.insertedId) {
           console.log("Success");
+          form.reset();
+          setPhotoURL(null);
         }
       })
       .catch((err) => console.log(err.message));
@@ -264,8 +269,7 @@ const AddCourse = () => {
             </label>
             <input
               type="number"
-              id="totalSeat"
-              name="seat"
+              name="totalSeat"
               required
               min="1"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

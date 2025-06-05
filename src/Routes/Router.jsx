@@ -6,6 +6,8 @@ import SignIn from "../Pages/Auth/SignIn";
 import SignUp from "../Pages/Auth/SignUp";
 import PrivateRoute from "../Components/Auth/PrivateRoute";
 import AddCourse from "../Pages/Mentor/AddCourse";
+import MyCourses from "../Pages/Mentor/MyCourses";
+import axios from "axios";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,16 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddCourse></AddCourse>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myCourses/:uid",
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/courses/${params.uid}`),
+        element: (
+          <PrivateRoute>
+            <MyCourses></MyCourses>
           </PrivateRoute>
         ),
       },

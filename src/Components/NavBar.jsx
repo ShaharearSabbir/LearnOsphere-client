@@ -68,7 +68,7 @@ const ProfileDropDown = (props) => {
   );
 };
 const NavBar = () => {
-  const { name, user, logOut, setUser } = useContext(AuthContext);
+  const { user, logOut, setUser } = useContext(AuthContext);
   const [menuState, setMenuState] = useState(false);
   console.log(user);
 
@@ -110,9 +110,14 @@ const NavBar = () => {
                 </li>
               ))}
               {user?.role === "mentor" && (
-                <li className="text-gray-600 hover:text-gray-900">
-                  <NavLink to="/addCourse">Add Course</NavLink>
-                </li>
+                <>
+                  <li className="text-gray-600 hover:text-gray-900">
+                    <NavLink to={`/myCourses/${user.uid}`}>My Courses</NavLink>
+                  </li>
+                  <li className="text-gray-600 hover:text-gray-900">
+                    <NavLink to="/addCourse">Add Course</NavLink>
+                  </li>
+                </>
               )}
             </ul>
             <ProfileDropDown
