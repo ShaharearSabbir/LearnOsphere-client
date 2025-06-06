@@ -16,10 +16,10 @@ const LatestCourses = () => {
     <div className="my-16 lg:my-30">
       <div className="flex flex-col md:flex-row gap-10 not-lg:items-center lg:justify-between my-5 lg:my-12">
         <div>
-          <h4 className="font-bold not-lg:text-center">New Courses</h4>
-          <h2 className="text-3xl lg:text-5xl font-bold not-lg:text-center">
+          <h4 className="secondary-title">New Courses</h4>
+          <h2 className="primary-title">
             Most New{" "}
-            <div className="inline text-blue-600 relative">
+            <div className="primary-title-second">
               <span>Courses</span>
               <motion.img
                 variants={underline()}

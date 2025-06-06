@@ -7,6 +7,7 @@ import { container } from "../../animation/animate";
 import LatestCourses from "../../Components/HomeComponents/LatestCourses";
 import PopularCourses from "../../Components/HomeComponents/PopularCourses";
 import TwinBoxes from "../../Components/HomeComponents/TwinBoxes";
+import ReviewsOnHome from "../../Components/HomeComponents/ReviewsOnHome/ReviewsOnHome";
 
 const MainHome = () => {
   return (
@@ -44,6 +45,8 @@ const MainHome = () => {
       >
         <PopularCourses />
       </motion.div>
+
+      <ReviewsOnHome />
     </div>
   );
 };

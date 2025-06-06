@@ -11,7 +11,6 @@ body {
 }
 
 
-
 .btn-secondary {
     @apply bg-amber-500 hover:bg-amber-400
 }
@@ -27,4 +26,16 @@ body {
 
 .btn-primary-outline {
     @apply bg-blue-600 border-2 border-blue-600 hover:bg-transparent hover:text-black
+}
+
+.secondary-title{
+    @apply text-lg font-light mb-1 text-blue-600
+}
+
+.primary-title {
+    @apply text-3xl lg:text-5xl font-bold not-lg:text-center
+}
+
+.primary-title-second {
+    @apply inline text-blue-600 relative
 }

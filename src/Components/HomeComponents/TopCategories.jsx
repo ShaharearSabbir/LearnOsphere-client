@@ -15,10 +15,10 @@ const TopCategories = () => {
   return (
     <div className="my-16 lg:my-30 text-center">
       <div className="text-center my-5 lg:my-12">
-        <h4 className="text-lg font-bold mb-1">Top Categories</h4>
-        <h2 className="text-3xl lg:text-5xl font-bold">
+        <h4 className="secondary-title">Top Categories</h4>
+        <h2 className="primary-title">
           Most demanding{" "}
-          <div className="inline text-blue-600 relative">
+          <div className="primary-title-second">
             <span>Categories</span>
             <motion.img
               variants={underline()}
