@@ -45,10 +45,9 @@ const ProfileDropDown = (props) => {
           state ? "" : "lg:hidden"
         }`}
       >
-        {navigation.map((item, idx) => (
-          <li>
+        {navigation.map((item, index) => (
+          <li key={index}>
             <a
-              key={idx}
               className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
               href={item.path}
             >
@@ -109,8 +108,8 @@ const NavBar = () => {
             }`}
           >
             <ul className="mt-12 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
-              {navigation.map((item, idx) => (
-                <li key={idx} className="text-gray-600 hover:text-gray-900">
+              {navigation.map((item, index) => (
+                <li key={index} className="text-gray-600 hover:text-gray-900">
                   <NavLink href={item.path}>{item.title}</NavLink>
                 </li>
               ))}
@@ -128,7 +127,7 @@ const NavBar = () => {
             <ProfileDropDown
               user={user}
               logOut={handleSignOut}
-              class="mt-5 pt-5 border-t lg:hidden"
+              className="mt-5 pt-5 border-t lg:hidden"
             />
           </div>
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
@@ -145,7 +144,7 @@ const NavBar = () => {
               <ProfileDropDown
                 user={user}
                 logOut={handleSignOut}
-                class="hidden lg:block"
+                className="hidden lg:block"
               />
             )}
             <button

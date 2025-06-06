@@ -24,7 +24,7 @@ const MainCourseDetails = ({
   }
 
   return (
-    <div className="bg-blue-100 p-5 rounded-2xl space-y-6">
+    <div className="bg-blue-100 p-5 rounded-2xl space-y-6 sticky top-20">
       <div className="flex justify-between items-center gap-5">
         <div>
           <h2 className="text-lg md:text-2xl lg:text-3xl font-bold">{title}</h2>
@@ -57,12 +57,15 @@ const MainCourseDetails = ({
             </div>
             <div className="flex items-center gap-1">
               <FaClock />
-              <p>{duration}</p>
+              <p>{duration}H</p>
             </div>
           </div>
           <div className="flex gap-2 flex-wrap">
-            {topics.map((topic) => (
-              <p className="bg-white p-1 rounded text-blue-600 h-fit">
+            {topics.map((topic, index) => (
+              <p
+                key={index}
+                className="bg-white p-1 rounded text-blue-600 h-fit"
+              >
                 {topic}
               </p>
             ))}

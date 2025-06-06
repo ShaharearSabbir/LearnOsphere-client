@@ -7,7 +7,7 @@ import { container } from "../../../animation/animate";
 
 const CourseDetails = () => {
   const course = useLoaderData().data;
-  console.log(course);
+  const { _id } = course;
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 my-8 lg:my-16">
       <motion.div
@@ -24,7 +24,7 @@ const CourseDetails = () => {
         animate="animate"
         className="lg:col-span-4"
       >
-        <SideCourseDetails />
+        <SideCourseDetails id={_id} />
       </motion.div>
     </div>
   );
