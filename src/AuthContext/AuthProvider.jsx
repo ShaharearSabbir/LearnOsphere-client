@@ -50,7 +50,10 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubs = onAuthStateChanged(auth, (currentUSer) => {
       setUser(currentUSer);
-      loadUserData(currentUSer);
+      setLoading(false);
+      if (currentUSer) {
+        loadUserData(currentUSer);
+      }
     });
     return () => unSubs();
   }, []);
@@ -58,7 +61,6 @@ const AuthProvider = ({ children }) => {
   const loadUserData = (currentUSer) => {
     axios(`http://localhost:3000/user/${currentUSer.uid}`).then((res) => {
       setUser((prevUSer) => ({ ...prevUSer, ...res.data }));
-      setLoading(false);
     });
   };
 

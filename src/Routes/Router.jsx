@@ -10,7 +10,7 @@ import MyCourses from "../Pages/Mentor/MyCourses";
 import axios from "axios";
 import UpdateCourse from "../Pages/Mentor/UpdateCourse";
 import Loader from "../Components/SharedComponents/Loader";
-import CourseDetails from "../Components/SharedComponents/CourseDetails";
+import CourseDetails from "../Components/SharedComponents/CourseDetails/CourseDetails";
 
 export const router = createBrowserRouter([
   {

@@ -5,16 +5,11 @@ import { FaClock } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
 import icons from "currency-icons";
 import { Link } from "react-router";
+import { pricePercentage } from "../../Utils/Utilities";
 
 const CourseCard = ({ course }) => {
-  if (!course.free) {
-    const discountAmount =
-      parseInt(course.price?.regularPrice) -
-      parseInt(course.price?.discountedPrice);
-    var discountPercentage = (
-      (discountAmount / parseInt(course.price?.regularPrice)) *
-      100
-    ).toFixed(2);
+  if (course.price) {
+    var discountPercentage = pricePercentage(course.price);
   }
 
   return (

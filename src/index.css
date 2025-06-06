@@ -3,10 +3,11 @@
 
 body {
     font-family: "Inter", sans-serif;
+    @apply selection:bg-green-200 selection:text-green-600
 }
 
 .btn {
-    @apply px-5 py-2 rounded-lg text-white h-fit
+    @apply px-5 py-2 rounded-lg text-white h-fit cursor-pointer duration-500
 }
 
 

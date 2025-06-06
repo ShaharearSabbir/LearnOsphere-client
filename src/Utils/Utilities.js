@@ -79,3 +79,14 @@ export const setRoleOnDB = async (user, setUser, navigate, location) => {
     console.log("No role selected or dialog dismissed.");
   }
 };
+
+export const pricePercentage = (price) => {
+  const discountAmount =
+    parseInt(price.regularPrice) - parseInt(price.discountedPrice);
+  const discountPercentage = (
+    (discountAmount / parseInt(price.regularPrice)) *
+    100
+  ).toFixed(2);
+
+  return discountPercentage;
+};
