@@ -1,6 +1,6 @@
 import { animate, delay } from "motion";
 
-export const container = (direction, transDelay = 0, duration = 0.5) => ({
+export const container = (direction, transDelay = 0, duration = 0.3) => ({
   initial: {
     x: direction === "LTR" ? -100 : direction === "RTL" ? 100 : 0,
     y: direction === "TTB" ? -100 : direction === "BTT" ? 100 : 0,

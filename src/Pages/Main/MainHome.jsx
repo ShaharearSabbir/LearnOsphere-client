@@ -5,12 +5,14 @@ import TopCategories from "../../Components/HomeComponents/TopCategories";
 import { motion } from "motion/react";
 import { container } from "../../animation/animate";
 import LatestCourses from "../../Components/HomeComponents/LatestCourses";
+import PopularCourses from "../../Components/HomeComponents/PopularCourses";
+import TwinBoxes from "../../Components/HomeComponents/TwinBoxes";
 
 const MainHome = () => {
   return (
     <div>
       <motion.div
-        variants={container("BTT", 0.1)}
+        variants={container("BTT")}
         initial={"initial"}
         animate={`animate`}
       >
@@ -18,18 +20,29 @@ const MainHome = () => {
         <Features />
       </motion.div>
       <motion.div
-        variants={container("BTT", 0.2)}
+        variants={container("BTT")}
         initial={`initial`}
         whileInView={`animate`}
       >
         <TopCategories />
       </motion.div>
+      <div>
+        <TwinBoxes />
+      </div>
       <motion.div
-        variants={container("BTT", 0.2)}
+        variants={container("BTT")}
         initial={`initial`}
         whileInView={`animate`}
       >
         <LatestCourses />
+      </motion.div>
+
+      <motion.div
+        variants={container("BTT")}
+        initial={`initial`}
+        whileInView={`animate`}
+      >
+        <PopularCourses />
       </motion.div>
     </div>
   );

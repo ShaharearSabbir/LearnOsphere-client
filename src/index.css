@@ -6,13 +6,24 @@ body {
 }
 
 .btn {
-    @apply px-5 py-2 rounded-lg text-white w-fit h-fit
+    @apply px-5 py-2 rounded-lg text-white h-fit
 }
 
+
+
 .btn-secondary {
-    @apply bg-amber-500
+    @apply bg-amber-500 hover:bg-amber-400
 }
 
 .btn-primary {
-    @apply bg-blue-600
+    @apply bg-blue-600  hover:bg-blue-400
+}
+
+
+.btn-secondary-outline {
+    @apply bg-amber-500 border-2 border-amber-500 hover:bg-transparent hover:text-black
+}
+
+.btn-primary-outline {
+    @apply bg-blue-600 border-2 border-blue-600 hover:bg-transparent hover:text-black
 }

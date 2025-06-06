@@ -10,6 +10,7 @@ import MyCourses from "../Pages/Mentor/MyCourses";
 import axios from "axios";
 import UpdateCourse from "../Pages/Mentor/UpdateCourse";
 import Loader from "../Components/SharedComponents/Loader";
+import CourseDetails from "../Components/SharedComponents/CourseDetails";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,16 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateCourse />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "courseDetails/:id",
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/course/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <CourseDetails />
           </PrivateRoute>
         ),
       },

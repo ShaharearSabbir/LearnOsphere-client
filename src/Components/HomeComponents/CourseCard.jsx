@@ -4,6 +4,7 @@ import { image } from "../../animation/animate";
 import { FaClock } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
 import icons from "currency-icons";
+import { Link } from "react-router";
 
 const CourseCard = ({ course }) => {
   if (!course.free) {
@@ -17,7 +18,7 @@ const CourseCard = ({ course }) => {
   }
 
   return (
-    <div className="border-2 border-gray-200 p-5 rounded-2xl relative hover:shadow-2xl overflow-hidden h-fit pb-20 lg:pb-50">
+    <div className="border-2 border-gray-200 p-5 rounded-2xl relative hover:shadow-xl overflow-hidden h-fit pb-20 lg:pb-50">
       <div className="overflow-hidden rounded-2xl">
         <motion.img
           variants={image()}
@@ -75,7 +76,12 @@ const CourseCard = ({ course }) => {
             )}
           </div>
         </div>
-        <button className="btn btn-primary min-w-full">Enroll</button>
+        <Link
+          to={`/courseDetails/${course._id}`}
+          className="btn btn-primary w-full block text-center"
+        >
+          View Details
+        </Link>
       </motion.div>
     </div>
   );
