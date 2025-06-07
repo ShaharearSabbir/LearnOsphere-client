@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthContext/AuthContext";
 import axios from "axios";
 
 const UpdateProfile = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, userInfoUpdate } = useContext(AuthContext);
   const [photoURL, setPhotoURL] = useState(user.photoURL);
   const [photoUploaded, setPhotoUploaded] = useState(false);
 
@@ -26,6 +26,13 @@ const UpdateProfile = () => {
     const userData = Object.fromEntries(formData.entries());
     delete userData.image;
     userData.photoURL = photoURL;
+
+    if (
+      userData.displayName !== user.displayName ||
+      userData.photoURL !== user.photoURL
+    ) {
+      userInfoUpdate(userData.displayName, userData.photoURL);
+    }
     if (
       userData.displayName !== user.displayName ||
       userData.photoURL !== user.photoURL ||
