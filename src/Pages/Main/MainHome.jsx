@@ -12,7 +12,7 @@ import TwinBoxesMobile from "../../Components/HomeComponents/TwinBoxesMobile";
 
 const MainHome = () => {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden my-5 lg:my-12">
       <motion.div
         variants={container("BTT")}
         initial={"initial"}

@@ -9,6 +9,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateEmail,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
 import axios from "axios";
@@ -47,6 +49,13 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provideGithub);
   };
 
+  const userInfoUpdate = (displayName, photoURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName: displayName,
+      photoURL: photoURL,
+    });
+  };
+
   useEffect(() => {
     const unSubs = onAuthStateChanged(auth, (currentUSer) => {
       setUser(currentUSer);
@@ -60,7 +69,8 @@ const AuthProvider = ({ children }) => {
 
   const loadUserData = (currentUSer) => {
     axios(`http://localhost:3000/user/${currentUSer.uid}`).then((res) => {
-      setUser((prevUSer) => ({ ...prevUSer, ...res.data }));
+      const role = res.data.role;
+      setUser((prevUSer) => ({ ...prevUSer, role }));
     });
   };
 
@@ -71,6 +81,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     facebookLogin,
     githubLogin,
+    userInfoUpdate,
     logOut,
     setUser,
     user,

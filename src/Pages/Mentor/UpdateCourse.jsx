@@ -28,8 +28,6 @@ const UpdateCourse = () => {
           title: "Problem Loading Categories",
         });
       });
-
-    axios;
   }, []);
 
   const handleImage = async (e) => {

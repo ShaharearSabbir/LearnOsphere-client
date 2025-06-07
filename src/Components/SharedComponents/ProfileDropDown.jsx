@@ -121,19 +121,16 @@ const ProfileDropDown = ({ links }) => {
         <ul className="lg:hidden space-y-3">{links}</ul>
 
         {user && (
-          <>
-            <ul>
-              <li className="text-gray-600 hover:text-gray-900">
-                <NavBar>Profile</NavBar>
-              </li>
-              <li className="text-gray-600 hover:text-gray-900">
-                <NavBar>Dashboard</NavBar>
-              </li>
-            </ul>
-            <button onClick={handleSignOut} className="btn btn-secondary">
-              LogOut
-            </button>
-          </>
+          <ul className="space-y-3 *:text-gray-600 *:hover:text-gray-900">
+            <li>
+              <Link to={`/profile`}>Profile</Link>
+            </li>
+            <li>
+              <Link onClick={handleSignOut} className="cursor-pointer">
+                LogOut
+              </Link>
+            </li>
+          </ul>
         )}
       </div>
     </div>

@@ -39,3 +39,7 @@ body {
 .primary-title-second {
     @apply inline text-blue-600 relative
 }
+
+a.active{
+    @apply text-blue-600
+}

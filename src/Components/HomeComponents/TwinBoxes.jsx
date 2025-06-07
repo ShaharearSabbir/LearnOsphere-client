@@ -9,18 +9,18 @@ const TwinBoxes = () => {
 
   const getBoxWidths = () => {
     if (hoveredBox === "left") {
-      return { left: "55%", right: "45%" };
+      return { left: "53%", right: "43%" };
     } else if (hoveredBox === "right") {
-      return { left: "45%", right: "55%" };
+      return { left: "43%", right: "53%" };
     } else {
-      return { left: "50%", right: "50%" };
+      return { left: "48%", right: "48%" };
     }
   };
 
   const { left: leftBoxWidth, right: rightBoxWidth } = getBoxWidths();
 
   return (
-    <div className="flex w-full gap-6 lg:gap-10">
+    <div className="flex w-full gap-6 lg:gap-10 justify-center items-center">
       <motion.div
         variants={container("LTR")}
         initial="initial"

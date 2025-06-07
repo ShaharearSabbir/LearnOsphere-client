@@ -11,6 +11,9 @@ import axios from "axios";
 import UpdateCourse from "../Pages/Mentor/UpdateCourse";
 import Loader from "../Components/SharedComponents/Loader";
 import CourseDetails from "../Components/SharedComponents/CourseDetails/CourseDetails";
+import ProfileOutlet from "../Pages/Profile/ProfileOutlet";
+import Profile from "../Pages/Profile/Profile";
+import UpdateProfile from "../Pages/Profile/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +59,26 @@ export const router = createBrowserRouter([
             <CourseDetails />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/",
+        element: (
+          <PrivateRoute>
+            <ProfileOutlet />
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "profile",
+
+            Component: Profile,
+          },
+          {
+            path: "updateProfile",
+
+            Component: UpdateProfile,
+          },
+        ],
       },
     ],
   },

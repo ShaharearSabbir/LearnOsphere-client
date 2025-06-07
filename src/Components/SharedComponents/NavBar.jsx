@@ -7,6 +7,8 @@ import BrandLogo from "./BrandLogo";
 const NavBar = () => {
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+
   const links = (
     <>
       <li className="text-gray-600 hover:text-gray-900">

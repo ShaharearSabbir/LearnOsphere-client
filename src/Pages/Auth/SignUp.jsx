@@ -8,7 +8,7 @@ import SocialLogin from "../../Components/AuthComponents/SocialLogin";
 import BrandLogo from "../../Components/SharedComponents/BrandLogo";
 
 const SignUp = () => {
-  const { createUser, setUser } = useContext(AuthContext);
+  const { createUser, setUser, userInfoUpdate } = useContext(AuthContext);
   const [photoURL, setPhotoURL] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,6 +34,7 @@ const SignUp = () => {
           userData.uid = currentUser.user.uid;
           delete userData.image;
           userData.photoURL = photoURL;
+          userInfoUpdate(userData.displayName, photoURL);
           axios
             .post("http://localhost:3000/user", userData)
             .then((res) => {
