@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { image } from "../../animation/animate";
-import { FaClock } from "react-icons/fa";
+import { FaClock, FaStar } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
 import icons from "currency-icons";
 import { Link } from "react-router";
@@ -68,6 +68,17 @@ const CourseCard = ({ course }) => {
                   {course.price?.discountedPrice}
                 </h5>
               </>
+            )}
+          </div>
+
+          <div>
+            {course.numberOfReview > 0 && (
+              <div className="flex gap-1 items-center">
+                <FaStar className="h-5 w-5 text-yellow-500" />
+                <p>
+                  {course.averageRating}/{course.numberOfReview}
+                </p>
+              </div>
             )}
           </div>
         </div>

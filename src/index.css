@@ -29,7 +29,7 @@ body {
 }
 
 .secondary-title{
-    @apply text-lg font-light mb-1 text-blue-600
+    @apply text-lg mb-1 bg-linear-to-tr from-blue-600 to-amber-500 bg-clip-text text-transparent font-light tracking-tight
 }
 
 .primary-title {

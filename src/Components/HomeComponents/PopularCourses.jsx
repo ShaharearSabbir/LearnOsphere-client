@@ -8,7 +8,7 @@ import CourseCard from "./CourseCard";
 const PopularCourses = () => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    axios(`http://localhost:3000/courses?limit=6`)
+    axios(`http://localhost:3000/courses?sortBy=averageRating&limit=6`)
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err.message));
   }, []);

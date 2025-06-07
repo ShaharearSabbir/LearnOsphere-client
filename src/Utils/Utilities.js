@@ -51,6 +51,8 @@ export const setRoleOnDB = async (user, setUser, navigate, location) => {
     const userData = {
       role: role,
       uid: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
     };
     axios
       .post("http://localhost:3000/user", userData)
