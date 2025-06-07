@@ -50,13 +50,13 @@ const MyCourseTableRow = ({ course, idx, setCourses }) => {
         <Link
           state={location.pathname}
           to={`/updateCourse/${course._id}`}
-          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-blue-50 rounded-lg"
         >
           Edit
         </Link>
         <button
           onClick={() => handleDeleteCourse(course._id)}
-          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-blue-50 rounded-lg"
         >
           Delete
         </button>

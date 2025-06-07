@@ -13,7 +13,7 @@ const CourseCard = ({ course }) => {
   }
 
   return (
-    <div className="border-2 border-gray-200 p-5 rounded-2xl relative hover:shadow-xl overflow-hidden h-fit pb-20 lg:pb-50">
+    <div className="border-2 border-blue-200 p-5 rounded-2xl relative hover:shadow-xl overflow-hidden h-fit pb-20 lg:pb-50">
       <div className="overflow-hidden rounded-2xl">
         <motion.img
           variants={image()}
@@ -31,7 +31,7 @@ const CourseCard = ({ course }) => {
         className="space-y-3 mt-5 lg:absolute lg:bottom-0 lg:right-0 lg:left-0 lg:p-5 bg-white"
       >
         <div className="flex justify-between">
-          <p className="py-1 px-2 bg-blue-100 text-blue-600 rounded-lg w-fit">
+          <p className="py-1 px-2 bg-blue-100 text-gray-600 rounded-lg w-fit">
             {course.category}
           </p>
           {!course.free && (
@@ -56,14 +56,14 @@ const CourseCard = ({ course }) => {
         <div className="flex justify-between items-end bottom-5">
           <div>
             {course.free ? (
-              <h5 className="text-xl font-semibold text-blue-600">Free!!</h5>
+              <h5 className="text-xl font-semibold text-gray-600">Free!!</h5>
             ) : (
               <>
                 <del>
                   {icons[course.price.currency].symbol}
                   {course.price?.regularPrice}
                 </del>
-                <h5 className="text-xl font-semibold text-blue-600">
+                <h5 className="text-xl font-semibold text-gray-600">
                   {icons[course.price.currency].symbol}
                   {course.price?.discountedPrice}
                 </h5>

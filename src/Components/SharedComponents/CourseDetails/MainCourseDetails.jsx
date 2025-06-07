@@ -28,7 +28,7 @@ const MainCourseDetails = ({
       <div className="flex justify-between items-center gap-5">
         <div>
           <h2 className="text-lg md:text-2xl lg:text-3xl font-bold">{title}</h2>
-          <p className="font-semibold text-blue-600">{mentorName}</p>
+          <p className="font-semibold text-gray-600">{mentorName}</p>
         </div>
         <button className="btn btn-primary-outline">Enroll</button>
       </div>
@@ -64,7 +64,7 @@ const MainCourseDetails = ({
             {topics.map((topic, index) => (
               <p
                 key={index}
-                className="bg-white p-1 rounded text-blue-600 h-fit"
+                className="bg-white p-1 rounded text-gray-600 h-fit"
               >
                 {topic}
               </p>
@@ -73,14 +73,14 @@ const MainCourseDetails = ({
           <div className="flex justify-between items-center">
             <div>
               {free ? (
-                <h5 className="text-xl font-semibold text-blue-600">Free!!</h5>
+                <h5 className="text-xl font-semibold text-gray-600">Free!!</h5>
               ) : (
                 <>
                   <del>
                     {icons[price.currency].symbol}
                     {price?.regularPrice}
                   </del>
-                  <h5 className="text-xl font-semibold text-blue-600">
+                  <h5 className="text-xl font-semibold text-gray-600">
                     {icons[price.currency].symbol}
                     {price.discountedPrice}
                   </h5>

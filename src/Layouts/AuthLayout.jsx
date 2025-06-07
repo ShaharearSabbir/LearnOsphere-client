@@ -1,13 +1,12 @@
 import { Outlet } from "react-router";
-
-import AuthLogo from "../Components/AuthComponents/AuthLogo";
+import BrandLogo from "../Components/SharedComponents/BrandLogo";
 
 const AuthLayout = () => {
   return (
     <main className="w-full flex">
-      <div className="fixed lg:w-1/2 flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
+      <div className="fixed lg:w-1/2 flex-1 hidden items-center justify-center h-screen bg-blue-900 lg:flex">
         <div className="relative z-10 w-full max-w-md">
-          <AuthLogo />
+          <BrandLogo />
           <div className=" mt-10 space-y-3 text-center">
             <h3 className="text-white text-3xl font-bold">
               Your World of Knowledge, at Your Fingertips

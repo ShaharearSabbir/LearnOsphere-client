@@ -25,7 +25,7 @@ const MyCourses = () => {
         </div>
         <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
           <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+            <thead className="bg-blue-50 text-gray-600 font-medium border-b">
               <tr>
                 <th className="py-3 px-6">Course Title</th>
                 <th className="py-3 px-6 text-center">Seat Status</th>

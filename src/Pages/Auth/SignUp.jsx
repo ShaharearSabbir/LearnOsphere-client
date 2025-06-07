@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { FcGoogle } from "react-icons/fc";
 import { FaArrowLeft } from "react-icons/fa";
-import AuthLogo from "../../Components/AuthComponents/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast, uploadImage } from "../../Utils/Utilities";
 import axios from "axios";
 import SocialLogin from "../../Components/AuthComponents/SocialLogin";
+import BrandLogo from "../../Components/SharedComponents/BrandLogo";
 
 const SignUp = () => {
   const { createUser, setUser } = useContext(AuthContext);
@@ -71,7 +70,7 @@ const SignUp = () => {
     <div className="flex-1 flex items-center justify-center min-h-screen py-10 lg:py-20">
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div className="">
-          <AuthLogo />
+          <BrandLogo />
           <div className="mt-5 space-y-2">
             <Link
               to={location.state || "/"}
@@ -94,7 +93,7 @@ const SignUp = () => {
           <SocialLogin location={location} />
         </div>
         <div className="relative">
-          <span className="block w-full h-px bg-gray-300"></span>
+          <span className="block w-full h-px bg-blue-300"></span>
           <p className="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">
             Or continue with
           </p>

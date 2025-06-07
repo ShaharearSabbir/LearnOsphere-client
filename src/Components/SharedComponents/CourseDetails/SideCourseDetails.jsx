@@ -55,7 +55,7 @@ const SideCourseDetails = ({ id }) => {
             </label>
             <textarea
               id="reviewText"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full border border-blue-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
               rows="3"
               placeholder="Share your experience..."
               value={reviewText}
@@ -96,7 +96,7 @@ const SideCourseDetails = ({ id }) => {
         </form>
       </div>
 
-      <div className="mt-8 pt-4 border-t border-gray-300">
+      <div className="mt-8 pt-4 border-t border-blue-300">
         {reviews && reviews.length > 0 ? (
           reviews
             .slice()

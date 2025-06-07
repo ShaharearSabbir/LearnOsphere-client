@@ -66,19 +66,19 @@ const SocialLogin = ({ location }) => {
     <div className="grid grid-cols-1, lg: grid-cols-3 gap-5">
       <button
         onClick={handleGoogleLogin}
-        className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
+        className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-blue-50 duration-150 active:bg-blue-100"
       >
         <FcGoogle size={22} className="mr-1" /> Google
       </button>
       <button
         onClick={handleFacebookLogin}
-        className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
+        className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-blue-50 duration-150 active:bg-blue-100"
       >
         <FaFacebookSquare size={22} className="mr-1" color="blue" /> Facebook
       </button>
       <button
         onClick={handleGithubLogin}
-        className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
+        className="flex items-center w-full justify-center px-5 py-2.5 border rounded-lg hover:bg-blue-50 duration-150 active:bg-blue-100"
       >
         <FaGithub size={22} className="mr-1" color="" /> Github
       </button>

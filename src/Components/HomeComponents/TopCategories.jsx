@@ -33,7 +33,7 @@ const TopCategories = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-6 lg:my-12">
         {categories.map((category) => (
-          <CategoryCard category={category} />
+          <CategoryCard key={category._id} category={category} />
         ))}
       </div>
       <button className="btn btn-primary">All Categories</button>

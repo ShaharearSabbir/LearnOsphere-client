@@ -8,10 +8,11 @@ import LatestCourses from "../../Components/HomeComponents/LatestCourses";
 import PopularCourses from "../../Components/HomeComponents/PopularCourses";
 import TwinBoxes from "../../Components/HomeComponents/TwinBoxes";
 import ReviewsOnHome from "../../Components/HomeComponents/ReviewsOnHome/ReviewsOnHome";
+import TwinBoxesMobile from "../../Components/HomeComponents/TwinBoxesMobile";
 
 const MainHome = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <motion.div
         variants={container("BTT")}
         initial={"initial"}
@@ -27,8 +28,11 @@ const MainHome = () => {
       >
         <TopCategories />
       </motion.div>
-      <div>
+      <div className="hidden lg:block">
         <TwinBoxes />
+      </div>
+      <div className="lg:hidden">
+        <TwinBoxesMobile />
       </div>
       <motion.div
         variants={container("BTT")}

@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-
 import { FaArrowLeft } from "react-icons/fa";
 import SocialLogin from "../../Components/AuthComponents/SocialLogin";
-import AuthLogo from "../../Components/AuthComponents/AuthLogo";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast } from "../../Utils/Utilities";
+import BrandLogo from "../../Components/SharedComponents/BrandLogo";
 
 const SignIn = () => {
   const { loginUSer, user } = useContext(AuthContext);
@@ -36,7 +35,7 @@ const SignIn = () => {
     <div className="flex-1 flex items-center justify-center min-h-screen py-10">
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div className="">
-          <AuthLogo />
+          <BrandLogo />
           <div className="mt-5 space-y-2">
             <Link
               to={location.state || "/"}
@@ -59,7 +58,7 @@ const SignIn = () => {
           <SocialLogin location={location} />
         </div>
         <div className="relative">
-          <span className="block w-full h-px bg-gray-300"></span>
+          <span className="block w-full h-px bg-blue-300"></span>
           <p className="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">
             Or continue with
           </p>

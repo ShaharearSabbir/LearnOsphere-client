@@ -70,7 +70,7 @@ const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
             <input
               type="text"
               name="category"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               required
               placeholder="Enter item name"
             />
@@ -86,7 +86,7 @@ const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
             <textarea
               name="description"
               rows="3"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               required
               placeholder="Provide a detailed description"
             ></textarea>
@@ -105,7 +105,7 @@ const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
               type="file"
               id="courseImage"
               required
-              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-gray-700 hover:file:bg-blue-100"
               accept="image/*"
             />
             {photoURL && (
@@ -126,7 +126,7 @@ const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="px-4 py-2 border border-blue-300 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               aria-label="Cancel"
             >
               Cancel

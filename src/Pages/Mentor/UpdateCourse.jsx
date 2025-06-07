@@ -132,7 +132,7 @@ const UpdateCourse = () => {
               name="title"
               required
               placeholder="Enter Course Name"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
 
@@ -149,7 +149,7 @@ const UpdateCourse = () => {
               required
               rows="3"
               placeholder="Enter Course Description"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
 
@@ -166,7 +166,7 @@ const UpdateCourse = () => {
               defaultValue={course.duration}
               required
               placeholder="Enter Course Duration"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
 
@@ -181,7 +181,7 @@ const UpdateCourse = () => {
               onChange={handleImage}
               name="image"
               type="file"
-              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-gray-700 hover:file:bg-blue-100"
               accept="image/*"
             />
             {photoURL && (
@@ -210,7 +210,7 @@ const UpdateCourse = () => {
             <select
               name="category"
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"
             >
               <option value="" disabled selected>
                 Select a category
@@ -234,7 +234,7 @@ const UpdateCourse = () => {
                 name="free"
                 defaultChecked={!!course.free}
                 onChange={() => setFree(!free)}
-                className="ml-5 h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                className="ml-5 h-4 w-4 text-indigo-600 border-blue-300 rounded focus:ring-indigo-500"
               />
               <span className="ml-2">Free</span>
             </label>
@@ -248,7 +248,7 @@ const UpdateCourse = () => {
                   placeholder="Regular Price"
                   min="0"
                   step="0.01"
-                  className="mt-1 lg:col-span-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 lg:col-span-2 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 <input
                   name="discountedPrice"
@@ -258,13 +258,13 @@ const UpdateCourse = () => {
                   placeholder="Discount Price"
                   min="0"
                   step="0.01"
-                  className="mt-1 lg:col-span-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 lg:col-span-2 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 <select
                   name="currency"
                   defaultValue={course.price.currency}
                   required={!free}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -298,7 +298,7 @@ const UpdateCourse = () => {
               required
               rows="2"
               placeholder="Enter Course Topics (Separate by comma, e.g., React, JavaScript, Hooks)"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
 
@@ -314,7 +314,7 @@ const UpdateCourse = () => {
               type="number"
               name="totalSeat"
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
 
