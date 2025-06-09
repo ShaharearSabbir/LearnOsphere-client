@@ -2,13 +2,15 @@ import React, { useContext, useState } from "react";
 import { Toast, uploadImage } from "../../Utils/Utilities";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router";
 
 const UpdateProfile = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { user, setUser, userInfoUpdate } = useContext(AuthContext);
   const [photoURL, setPhotoURL] = useState(user.photoURL);
   const [photoUploaded, setPhotoUploaded] = useState(false);
-
-  console.log(user);
+  const [error, setError] = useState(false);
 
   const handleImage = async (e) => {
     const image = e.target.files[0];
@@ -49,15 +51,19 @@ const UpdateProfile = () => {
             });
           }
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          console.log(err.message);
+          setError(true);
+        });
+    }
+    if (!error) {
+      navigate(location.state);
     }
   };
 
   return (
     <div className="my-10">
-      <h3>
-        <h1 className="text-3xl font-bold text-center my-5">User Profile</h1>
-      </h3>
+      <h1 className="text-3xl font-bold text-center my-5">User Profile</h1>
       <form onSubmit={handleUpdateProfile} className="space-y-5">
         <div>
           <label className="font-medium">Role</label>

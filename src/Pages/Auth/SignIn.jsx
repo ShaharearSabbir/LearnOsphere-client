@@ -19,7 +19,7 @@ const SignIn = () => {
       .then(() => {
         Toast.fire({
           icon: "success",
-          title: `Welcome Back ${user ? user.displayName : "Dear"}!`,
+          title: `Welcome Back ${user?.displayName || null}!`,
         });
         navigate(location.state || "/");
       })

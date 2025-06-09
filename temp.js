@@ -1,54 +1,3 @@
-const categories = [
-  {
-    name: "Web Development",
-    description:
-      "Courses covering front-end, back-end, and full-stack web development.",
-    thumbnail: "url_to_web_dev_image.jpg",
-  },
-  {
-    name: "Data Science",
-    description:
-      "Courses focused on data analysis, machine learning, and artificial intelligence.",
-    thumbnail: "url_to_data_science_image.jpg",
-  },
-  {
-    name: "Marketing",
-    description:
-      "Courses in digital marketing, social media, SEO, and content strategy.",
-    thumbnail: "url_to_marketing_image.jpg",
-  },
-  {
-    name: "Graphic Design",
-    description:
-      "Courses for visual communication, UI/UX design, and creative software.",
-    thumbnail: "url_to_graphic_design_image.jpg",
-  },
-  {
-    name: "Business",
-    description:
-      "Courses on entrepreneurship, project management, and business administration.",
-    thumbnail: "url_to_business_image.jpg",
-  },
-  {
-    name: "Photography",
-    description:
-      "Courses from basic camera skills to advanced photo editing and composition.",
-    thumbnail: "url_to_photography_image.jpg",
-  },
-  {
-    name: "Music Production",
-    description:
-      "Courses on sound engineering, music theory, and digital audio workstations.",
-    thumbnail: "url_to_music_image.jpg",
-  },
-  {
-    name: "Health & Fitness",
-    description:
-      "Courses covering nutrition, exercise, and overall well-being.",
-    thumbnail: "url_to_health_image.jpg",
-  },
-];
-
 const courses = [
   // Web Development (7 courses)
   {
@@ -158,7 +107,8 @@ const courses = [
 
   // Data Science (7 courses)
   {
-    title: "Python for Data Science",
+    title: ",
+    title: "ytho,
     description:
       "Essential Python programming for data analysis, manipulation, and visualization.",
     thumbnail: "https://example.com/thumbnails/python_data.jpg",

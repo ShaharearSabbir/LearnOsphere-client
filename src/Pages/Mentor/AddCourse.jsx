@@ -63,8 +63,10 @@ const AddCourse = () => {
     if (courseData.free) {
       courseData.free = courseData.free === "on" && true;
     } else {
-      const { currency, discountedPrice, regularPrice, ...courseData2 } =
+      let { currency, discountedPrice, regularPrice, ...courseData2 } =
         courseData;
+      discountedPrice = parseFloat(discountedPrice);
+      regularPrice = parseFloat(regularPrice);
       courseData2.price = { currency, discountedPrice, regularPrice };
       courseData = courseData2;
     }
@@ -72,6 +74,10 @@ const AddCourse = () => {
     courseData.mentorEmail = user.email;
     courseData.mentorUID = user.uid;
     courseData.RemainingSeat = courseData.totalSeat;
+    courseData.totalSeat = parseInt(courseData.totalSeat);
+    courseData.RemainingSeat = parseInt(courseData.RemainingSeat);
+
+    console.log(courseData);
     axios
       .post("http://localhost:3000/course", courseData)
       .then((res) => {
@@ -260,6 +266,7 @@ const AddCourse = () => {
                 <select
                   name="currency"
                   required={!free}
+                  defaultValue={"USD"}
                   className="mt-1 block w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
                   <option value="USD">USD</option>
@@ -274,9 +281,7 @@ const AddCourse = () => {
                   <option value="BRL">BRL</option>
                   <option value="RUB">RUB</option>
                   <option value="ZAR">ZAR</option>
-                  <option value="BDT" selected>
-                    BDT
-                  </option>
+                  <option value="BDT">BDT</option>
                 </select>
               </div>
             )}

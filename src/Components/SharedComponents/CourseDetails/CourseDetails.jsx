@@ -6,6 +6,8 @@ import { motion } from "motion/react";
 import { container } from "../../../animation/animate";
 
 const CourseDetails = () => {
+
+
   const course = useLoaderData().data;
   const { _id } = course;
   return (

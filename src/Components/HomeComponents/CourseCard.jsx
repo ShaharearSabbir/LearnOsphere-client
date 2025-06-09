@@ -12,6 +12,7 @@ const CourseCard = ({ course }) => {
     var discountPercentage = pricePercentage(course.price);
   }
 
+
   return (
     <div className="border-2 border-blue-200 p-5 rounded-2xl relative hover:shadow-xl overflow-hidden h-fit pb-20 lg:pb-50">
       <div className="overflow-hidden rounded-2xl">

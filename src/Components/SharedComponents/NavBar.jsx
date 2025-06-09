@@ -6,21 +6,28 @@ import BrandLogo from "./BrandLogo";
 
 const NavBar = () => {
   const { user } = useContext(AuthContext);
-
-  console.log(user);
-
   const links = (
     <>
       <li className="text-gray-600 hover:text-gray-900">
         <NavLink to="/">Home</NavLink>
       </li>
+      <li className="text-gray-600 hover:text-gray-900">
+        <NavLink to="/courses">Courses</NavLink>
+      </li>
       {user?.role === "mentor" && (
         <>
           <li className="text-gray-600 hover:text-gray-900">
-            <NavLink to={`/myCourses/${user.uid}`}>My Courses</NavLink>
+            <NavLink to={`/myCourses`}>My Courses</NavLink>
           </li>
           <li className="text-gray-600 hover:text-gray-900">
             <NavLink to="/addCourse">Add Course</NavLink>
+          </li>
+        </>
+      )}
+      {user?.role === "learner" && (
+        <>
+          <li className="text-gray-600 hover:text-gray-900">
+            <NavLink to="/enrollments">My Enrollments</NavLink>
           </li>
         </>
       )}

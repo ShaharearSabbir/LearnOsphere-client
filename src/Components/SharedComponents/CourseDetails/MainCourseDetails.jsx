@@ -1,12 +1,16 @@
 import { motion } from "motion/react";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { image } from "../../../animation/animate";
 import { FaPerson } from "react-icons/fa6";
 import { FaClock } from "react-icons/fa";
-import { pricePercentage } from "../../../Utils/Utilities";
+import { pricePercentage, Toast } from "../../../Utils/Utilities";
 import icons from "currency-icons";
+import { AuthContext } from "../../../AuthContext/AuthContext";
+import axios from "axios";
+import { button } from "motion/react-client";
 
 const MainCourseDetails = ({
+  _id,
   title,
   description,
   category,
@@ -19,9 +23,59 @@ const MainCourseDetails = ({
   duration,
   free,
 }) => {
+  const { user } = useContext(AuthContext);
+
+  const [isEnrolled, setIsEnrolled] = useState(false);
+
+  useEffect(() => {
+    user?.enrolledCourses?.forEach((id) => {
+      if (id === _id) {
+        setIsEnrolled(true);
+      }
+    });
+  }, [user, _id]);
+
   if (price) {
     var discountPercentage = pricePercentage(price);
   }
+
+  const handleEnroll = (courseId, uid, enrolledCourses) => {
+    if (!isEnrolled) {
+      if (enrolledCourses.length >= 3) {
+        Toast.fire({
+          icon: "warning",
+          title: "3 courses only",
+        });
+        return;
+      }
+    }
+
+    const enrollmentData = { enroll: !isEnrolled, courseId, uid };
+    axios
+      .post("http://localhost:3000/enrollment", enrollmentData)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.message === "Enrollment successful!") {
+          enrolledCourses.push(courseId);
+          setIsEnrolled(true);
+          Toast.fire({
+            icon: "success",
+            title: "Enrolled Successfully",
+          });
+        }
+        if (res.data.message === "Unenrollment successful!") {
+          const updatedEnrolled = enrolledCourses.filter(
+            (id) => id !== courseId
+          );
+          user.enrolledCourses = updatedEnrolled;
+          setIsEnrolled(false);
+          Toast.fire({
+            icon: "warning",
+            title: "Discarded Successfully",
+          });
+        }
+      });
+  };
 
   return (
     <div className="bg-blue-100 p-5 rounded-2xl space-y-6 sticky top-20">
@@ -30,7 +84,36 @@ const MainCourseDetails = ({
           <h2 className="text-lg md:text-2xl lg:text-3xl font-bold">{title}</h2>
           <p className="font-semibold text-gray-600">{mentorName}</p>
         </div>
-        <button className="btn btn-primary-outline">Enroll</button>
+        <div className="flex flex-col items-end gap-2">
+          {RemainingSeat > 0 ? (
+            <>
+              {isEnrolled ? (
+                <button
+                  onClick={() =>
+                    handleEnroll(_id, user.uid, user.enrolledCourses)
+                  }
+                  className="btn btn-secondary-outline"
+                >
+                  Discard
+                </button>
+              ) : (
+                <button
+                  onClick={() =>
+                    handleEnroll(_id, user.uid, user.enrolledCourses)
+                  }
+                  className="btn btn-primary-outline"
+                >
+                  Enroll
+                </button>
+              )}
+              <p className="text-sm">{RemainingSeat} seat available</p>
+            </>
+          ) : (
+            <p className="text-red-600 bg-red-100 px-2 py-1 rounded-xl">
+              No seat available
+            </p>
+          )}
+        </div>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center gap-5">
         <div className="lg:w-1/2">

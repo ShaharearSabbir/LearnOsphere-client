@@ -9,16 +9,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateEmail,
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
 import axios from "axios";
 
-const AuthProvider = ({ children }) => {
+ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-
   const providerGoogle = new GoogleAuthProvider();
   const providerFacebook = new FacebookAuthProvider();
   const provideGithub = new GithubAuthProvider();
@@ -70,7 +68,8 @@ const AuthProvider = ({ children }) => {
   const loadUserData = (currentUSer) => {
     axios(`http://localhost:3000/user/${currentUSer.uid}`).then((res) => {
       const role = res.data.role;
-      setUser((prevUSer) => ({ ...prevUSer, role }));
+      const enrolledCourses = res.data.enrolledCourseIds;
+      setUser((prevUSer) => ({ ...prevUSer, role, enrolledCourses }));
     });
   };
 

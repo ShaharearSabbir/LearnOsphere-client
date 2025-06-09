@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
 import MainHome from "../Pages/Main/MainHome";
 import AuthLayout from "../Layouts/AuthLayout";
@@ -14,14 +14,19 @@ import CourseDetails from "../Components/SharedComponents/CourseDetails/CourseDe
 import ProfileOutlet from "../Pages/Profile/ProfileOutlet";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
+import Courses from "../Pages/Main/Courses";
 
-export const router = createBrowserRouter([
+import { getAuth } from "firebase/auth";
+import Enrollments from "../Pages/Learner/Enrollments";
+
+const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
     hydrateFallbackElement: <Loader />,
     children: [
       { index: true, Component: MainHome },
+      { path: "courses", Component: Courses },
       {
         path: "addCourse",
         element: (
@@ -31,12 +36,36 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "myCourses/:uid",
-        loader: ({ params }) =>
-          axios(`http://localhost:3000/courses/${params.uid}`),
+        path: "myCourses",
+        loader: async () => {
+          const auth = getAuth();
+          const user = auth.currentUser;
+
+          if (!user || !user.uid) {
+            return { data: [] };
+          }
+          return axios(`http://localhost:3000/courses/${user.uid}`);
+        },
         element: (
           <PrivateRoute>
             <MyCourses />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "enrollments",
+        loader: async () => {
+          const auth = getAuth();
+          const user = auth.currentUser;
+
+          if (!user || !user.uid) {
+            return { data: {} };
+          }
+          return axios(`http://localhost:3000/user/${user.uid}`);
+        },
+        element: (
+          <PrivateRoute>
+            <Enrollments />
           </PrivateRoute>
         ),
       },
@@ -70,12 +99,10 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "profile",
-
             Component: Profile,
           },
           {
             path: "updateProfile",
-
             Component: UpdateProfile,
           },
         ],
@@ -91,3 +118,5 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+export default router;
