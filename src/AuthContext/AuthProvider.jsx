@@ -13,8 +13,9 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
 import axios from "axios";
+import { useNavigation } from "react-router";
 
- const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const providerGoogle = new GoogleAuthProvider();
@@ -57,16 +58,18 @@ import axios from "axios";
   useEffect(() => {
     const unSubs = onAuthStateChanged(auth, (currentUSer) => {
       setUser(currentUSer);
-      setLoading(false);
       if (currentUSer) {
         loadUserData(currentUSer);
       }
+      setLoading(false);
     });
     return () => unSubs();
   }, []);
 
   const loadUserData = (currentUSer) => {
-    axios(`http://localhost:3000/user/${currentUSer.uid}`).then((res) => {
+    axios(
+      `https://learnosphere-server.vercel.app/user/${currentUSer.uid}`
+    ).then((res) => {
       const role = res.data.role;
       const enrolledCourses = res.data.enrolledCourseIds;
       setUser((prevUSer) => ({ ...prevUSer, role, enrolledCourses }));
@@ -85,6 +88,7 @@ import axios from "axios";
     setUser,
     user,
     loading,
+    setLoading,
   };
 
   return <AuthContext value={contextData}>{children}</AuthContext>;

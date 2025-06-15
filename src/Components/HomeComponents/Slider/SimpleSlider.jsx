@@ -17,8 +17,8 @@ const SimpleSlider = () => {
   return (
     <div className="slider-container rounded-2xl overflow-hidden">
       <Slider {...settings}>
-        {SLIDES.map((slide) => (
-          <Slide {...slide} />
+        {SLIDES.map((slide, index) => (
+          <Slide key={index} {...slide} />
         ))}
       </Slider>
     </div>

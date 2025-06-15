@@ -9,6 +9,7 @@ import PopularCourses from "../../Components/HomeComponents/PopularCourses";
 import TwinBoxes from "../../Components/HomeComponents/TwinBoxes";
 import ReviewsOnHome from "../../Components/HomeComponents/ReviewsOnHome/ReviewsOnHome";
 import TwinBoxesMobile from "../../Components/HomeComponents/TwinBoxesMobile";
+import FAQ from "../../Components/HomeComponents/FAQ";
 
 const MainHome = () => {
   return (
@@ -51,6 +52,8 @@ const MainHome = () => {
       </motion.div>
 
       <ReviewsOnHome />
+
+      <FAQ />
     </div>
   );
 };

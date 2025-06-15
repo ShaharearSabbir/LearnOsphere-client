@@ -8,9 +8,9 @@ import { underline } from "../../animation/animate";
 const TopCategories = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    axios("http://localhost:3000/categories?limit=4")
+    axios("https://learnosphere-server.vercel.app/categories?limit=4")
       .then((res) => setCategories(res.data))
-      .catch((err) => console.log(err.message));
+      .catch((err) => err.message);
   }, []);
   return (
     <div className="my-16 lg:my-30 text-center">

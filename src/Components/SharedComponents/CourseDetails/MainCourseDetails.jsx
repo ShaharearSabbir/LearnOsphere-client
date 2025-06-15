@@ -7,7 +7,6 @@ import { pricePercentage, Toast } from "../../../Utils/Utilities";
 import icons from "currency-icons";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 import axios from "axios";
-import { button } from "motion/react-client";
 
 const MainCourseDetails = ({
   _id,
@@ -26,6 +25,7 @@ const MainCourseDetails = ({
   const { user } = useContext(AuthContext);
 
   const [isEnrolled, setIsEnrolled] = useState(false);
+  const [remaining, setRemaining] = useState(RemainingSeat);
 
   useEffect(() => {
     user?.enrolledCourses?.forEach((id) => {
@@ -52,10 +52,11 @@ const MainCourseDetails = ({
 
     const enrollmentData = { enroll: !isEnrolled, courseId, uid };
     axios
-      .post("http://localhost:3000/enrollment", enrollmentData)
+      .post("https://learnosphere-server.vercel.app/enrollment", enrollmentData)
       .then((res) => {
-        console.log(res.data);
+        res.data;
         if (res.data.message === "Enrollment successful!") {
+          setRemaining((prev) => prev - 1);
           enrolledCourses.push(courseId);
           setIsEnrolled(true);
           Toast.fire({
@@ -64,6 +65,7 @@ const MainCourseDetails = ({
           });
         }
         if (res.data.message === "Unenrollment successful!") {
+          setRemaining((prev) => prev + 1);
           const updatedEnrolled = enrolledCourses.filter(
             (id) => id !== courseId
           );
@@ -85,7 +87,7 @@ const MainCourseDetails = ({
           <p className="font-semibold text-gray-600">{mentorName}</p>
         </div>
         <div className="flex flex-col items-end gap-2">
-          {RemainingSeat > 0 ? (
+          {remaining > 0 ? (
             <>
               {isEnrolled ? (
                 <button
@@ -101,12 +103,13 @@ const MainCourseDetails = ({
                   onClick={() =>
                     handleEnroll(_id, user.uid, user.enrolledCourses)
                   }
-                  className="btn btn-primary-outline"
+                  className="btn btn-primary-outline disabled:cursor-not-allowed"
+                  disabled={user ? false : true}
                 >
                   Enroll
                 </button>
               )}
-              <p className="text-sm">{RemainingSeat} seat available</p>
+              <p className="text-sm">{remaining} seat available</p>
             </>
           ) : (
             <p className="text-red-600 bg-red-100 px-2 py-1 rounded-xl">
@@ -135,7 +138,7 @@ const MainCourseDetails = ({
             <div className="flex items-center gap-1">
               <FaPerson />
               <p>
-                {RemainingSeat}/{totalSeat}
+                {remaining}/{totalSeat}
               </p>
             </div>
             <div className="flex items-center gap-1">

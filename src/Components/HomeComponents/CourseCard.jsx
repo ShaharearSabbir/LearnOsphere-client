@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 import { image } from "../../animation/animate";
 import { FaClock, FaStar } from "react-icons/fa";
@@ -6,20 +6,28 @@ import { FaPerson } from "react-icons/fa6";
 import icons from "currency-icons";
 import { Link } from "react-router";
 import { pricePercentage } from "../../Utils/Utilities";
+import { format } from "date-fns";
 
 const CourseCard = ({ course }) => {
   if (course.price) {
     var discountPercentage = pricePercentage(course.price);
   }
 
+  const createdTime = () => {
+    if (course.createdAt) {
+      return format(new Date(course.createdAt), "yyyy-MM-dd");
+    } else {
+      return "No Time Found";
+    }
+  };
 
   return (
     <div className="border-2 border-blue-200 p-5 rounded-2xl relative hover:shadow-xl overflow-hidden h-fit pb-20 lg:pb-50">
       <div className="overflow-hidden rounded-2xl">
         <motion.img
           variants={image()}
-          initial={`initial`}
-          whileHover={`animate`}
+          initial="initial"
+          whileHover="animate"
           className="w-full h-full object-cover"
           src={course.photoURL}
           alt=""
@@ -53,7 +61,12 @@ const CourseCard = ({ course }) => {
             </span>
           </div>
         </div>
-        <h3 className="text-2xl font-bold">{course.title}</h3>
+        <h3 className="text-2xl font-bold">
+          {course.title}{" "}
+          <span className="text-sm bg-blue-100 text-blue-600 inline-block px-2 py-0.5 rounded-full">
+            {createdTime()}
+          </span>
+        </h3>
         <div className="flex justify-between items-end bottom-5">
           <div>
             {course.free ? (

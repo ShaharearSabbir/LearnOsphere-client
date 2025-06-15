@@ -4,6 +4,7 @@ import { underline } from "../../animation/animate";
 import underlineImage from "../../assets/line-2-category-2.svg";
 import { motion } from "motion/react";
 import CourseCard from "../../Components/HomeComponents/CourseCard";
+import Loader from "../../Components/SharedComponents/Loader";
 
 const Courses = () => {
   const [sortBy, setSortBy] = useState("createdAt");
@@ -11,25 +12,28 @@ const Courses = () => {
   const [filterBy, setFilterBy] = useState("");
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [loading, setloading] = useState(true);
 
-  let url = `http://localhost:3000/courses?sortBy=${sortBy}&orderBy=${orderBy}&filterBy=${filterBy}`;
+  let url = `https://learnosphere-server.vercel.app/courses?sortBy=${sortBy}&orderBy=${orderBy}&filterBy=${filterBy}`;
 
   useEffect(() => {
+    setloading(true);
     axios(url)
       .then((res) => {
-        console.log(res.data);
+        res.data;
         setCourses(res.data);
+        setloading(false);
       })
       .catch((err) => {
-        console.log(err);
+        err;
       });
   }, [url]);
 
   useEffect(() => {
-    axios(`http://localhost:3000/categories`)
+    axios(`https://learnosphere-server.vercel.app/categories`)
       .then((res) => setCategories(res.data))
       .catch((err) => {
-        console.log(err);
+        err;
       });
   }, []);
 
@@ -50,7 +54,7 @@ const Courses = () => {
         </div>
       </h2>
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 my-16">
-        <aside className="lg:col-span-3 rounded-2xl h-fit sticky top-24">
+        <aside className="lg:col-span-3 rounded-2xl h-fit lg:sticky lg:top-24">
           <div>
             <h5 className="font-bold">Order by</h5>
             <select
@@ -66,7 +70,7 @@ const Courses = () => {
               onChange={(e) => setSortBy(e.target.value)}
             >
               <option value="createdAt">Newest</option>
-              <option value="numberOfReview">Best Selling</option>
+              <option value="totalEnrollment">Best Selling</option>
               <option value="averageRating">Highest Rated</option>
               <option value="title">Alphabetical</option>
               <option value="numberOfReview">Number of Reviews</option>
@@ -81,15 +85,19 @@ const Courses = () => {
               <option value="free">Free</option>
               <option value="price">Paid</option>
               {categories.map((cat) => (
-                <option>{cat.category}</option>
+                <option key={cat._id}>{cat.category}</option>
               ))}
             </select>
           </div>
         </aside>
         <section className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {courses.map((course) => (
-            <CourseCard course={course} />
-          ))}
+          {loading ? (
+            <div className="col-span-3 min-h-[60vh] flex justify-center items-center">
+              <Loader />
+            </div>
+          ) : (
+            courses.map((course) => <CourseCard course={course} />)
+          )}
         </section>
       </div>
     </>

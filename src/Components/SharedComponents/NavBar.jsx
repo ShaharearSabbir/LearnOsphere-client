@@ -6,6 +6,7 @@ import BrandLogo from "./BrandLogo";
 
 const NavBar = () => {
   const { user } = useContext(AuthContext);
+  user;
   const links = (
     <>
       <li className="text-gray-600 hover:text-gray-900">
@@ -31,6 +32,9 @@ const NavBar = () => {
           </li>
         </>
       )}
+      <li className="text-gray-600 hover:text-gray-900">
+        <NavLink to="/blogs">Blogs</NavLink>
+      </li>
     </>
   );
 

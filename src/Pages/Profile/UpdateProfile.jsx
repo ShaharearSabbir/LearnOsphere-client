@@ -41,7 +41,10 @@ const UpdateProfile = () => {
       userData.role !== user.role
     ) {
       axios
-        .put(`http://localhost:3000/user/${user.uid}`, userData)
+        .put(
+          `https://learnosphere-server.vercel.app/user/${user.uid}`,
+          userData
+        )
         .then((res) => {
           if (res.data.modifiedCount) {
             setUser((prev) => ({ ...prev, ...userData }));
@@ -52,7 +55,7 @@ const UpdateProfile = () => {
           }
         })
         .catch((err) => {
-          console.log(err.message);
+          err.message;
           setError(true);
         });
     }

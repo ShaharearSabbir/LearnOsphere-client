@@ -15,50 +15,56 @@ const SocialLogin = ({ location }) => {
   const handleFacebookLogin = async () => {
     facebookLogin().then((currentUSer) => {
       const uid = currentUSer.user.uid;
-      axios(`http://localhost:3000/user/${uid}`).then((res) => {
-        if (!res.data) {
-          setRoleOnDB(currentUSer.user, setUser, navigate, location);
-        } else {
-          navigate(location.state || "/");
-          Toast.fire({
-            icon: "success",
-            title: `Welcome Back ${currentUSer.user.displayName}!`,
-          });
+      axios(`https://learnosphere-server.vercel.app/user/${uid}`).then(
+        (res) => {
+          if (!res.data) {
+            setRoleOnDB(currentUSer.user, setUser, navigate, location);
+          } else {
+            navigate(location.state || "/");
+            Toast.fire({
+              icon: "success",
+              title: `Welcome Back ${currentUSer.user.displayName}!`,
+            });
+          }
         }
-      });
+      );
     });
   };
 
   const handleGoogleLogin = async () => {
     googleLogin().then((currentUSer) => {
       const uid = currentUSer.user.uid;
-      axios(`http://localhost:3000/user/${uid}`).then((res) => {
-        if (!res.data) {
-          setRoleOnDB(currentUSer.user, setUser, navigate, location);
-        } else {
-          navigate(location.state || "/");
-          Toast.fire({
-            icon: "success",
-            title: `Welcome Back ${currentUSer.user.displayName}!`,
-          });
+      axios(`https://learnosphere-server.vercel.app/user/${uid}`).then(
+        (res) => {
+          if (!res.data) {
+            setRoleOnDB(currentUSer.user, setUser, navigate, location);
+          } else {
+            navigate(location.state || "/");
+            Toast.fire({
+              icon: "success",
+              title: `Welcome Back ${currentUSer.user.displayName}!`,
+            });
+          }
         }
-      });
+      );
     });
   };
   const handleGithubLogin = async () => {
     githubLogin().then((currentUSer) => {
       const uid = currentUSer.user.uid;
-      axios(`http://localhost:3000/user/${uid}`).then((res) => {
-        if (!res.data) {
-          setRoleOnDB(currentUSer.user, setUser, navigate, location);
-        } else {
-          navigate(location.state || "/");
-          Toast.fire({
-            icon: "success",
-            title: `Welcome Back ${currentUSer.user.displayName}!`,
-          });
+      axios(`https://learnosphere-server.vercel.app/user/${uid}`).then(
+        (res) => {
+          if (!res.data) {
+            setRoleOnDB(currentUSer.user, setUser, navigate, location);
+          } else {
+            navigate(location.state || "/");
+            Toast.fire({
+              icon: "success",
+              title: `Welcome Back ${currentUSer.user.displayName}!`,
+            });
+          }
         }
-      });
+      );
     });
   };
 

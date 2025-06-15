@@ -12,11 +12,11 @@ const SideCourseDetails = ({ id }) => {
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    axios(`http://localhost:3000/reviewsByCourseId/${id}`)
+    axios(`https://learnosphere-server.vercel.app/reviewsByCourseId/${id}`)
       .then((res) => {
         setReviews(res.data);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => err.message);
   }, []);
 
   const handleSubmitReview = (e) => {
@@ -24,7 +24,7 @@ const SideCourseDetails = ({ id }) => {
     const { uid } = user;
     const reviewData = { reviewText, rating, uid, courseId: id };
     axios
-      .post("http://localhost:3000/review", reviewData)
+      .post("https://learnosphere-server.vercel.app/review", reviewData)
       .then((res) => {
         if (res.data.insertedId) {
           reviewData.reviewerName = user.displayName;
@@ -36,7 +36,7 @@ const SideCourseDetails = ({ id }) => {
           });
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => err.message);
     setReviewText("");
     setRating(0);
   };

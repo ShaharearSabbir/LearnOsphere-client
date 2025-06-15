@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
 import MainHome from "../Pages/Main/MainHome";
 import AuthLayout from "../Layouts/AuthLayout";
@@ -15,9 +15,10 @@ import ProfileOutlet from "../Pages/Profile/ProfileOutlet";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
 import Courses from "../Pages/Main/Courses";
-
-import { getAuth } from "firebase/auth";
 import Enrollments from "../Pages/Learner/Enrollments";
+import Error from "../Pages/Error";
+import Blogs from "../Pages/Blogs/Blogs";
+import AddBlog from "../Pages/Blogs/AddBlog";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,20 @@ const router = createBrowserRouter([
       { index: true, Component: MainHome },
       { path: "courses", Component: Courses },
       {
+        path: "blogs",
+        loader: () => axios("https://learnosphere-server.vercel.app/blogs"),
+        Component: Blogs,
+      },
+      { path: "addBlog", Component: AddBlog },
+      {
+        path: "category/:cat",
+        loader: ({ params }) =>
+          axios(
+            `https://learnosphere-server.vercel.app/courses?filterBy=${params.cat}`
+          ),
+        Component: Courses,
+      },
+      {
         path: "addCourse",
         element: (
           <PrivateRoute>
@@ -37,15 +52,6 @@ const router = createBrowserRouter([
       },
       {
         path: "myCourses",
-        loader: async () => {
-          const auth = getAuth();
-          const user = auth.currentUser;
-
-          if (!user || !user.uid) {
-            return { data: [] };
-          }
-          return axios(`http://localhost:3000/courses/${user.uid}`);
-        },
         element: (
           <PrivateRoute>
             <MyCourses />
@@ -54,15 +60,6 @@ const router = createBrowserRouter([
       },
       {
         path: "enrollments",
-        loader: async () => {
-          const auth = getAuth();
-          const user = auth.currentUser;
-
-          if (!user || !user.uid) {
-            return { data: {} };
-          }
-          return axios(`http://localhost:3000/user/${user.uid}`);
-        },
         element: (
           <PrivateRoute>
             <Enrollments />
@@ -72,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "updateCourse/:id",
         loader: ({ params }) =>
-          axios(`http://localhost:3000/course/${params.id}`),
+          axios(`https://learnosphere-server.vercel.app/course/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateCourse />
@@ -82,12 +79,8 @@ const router = createBrowserRouter([
       {
         path: "courseDetails/:id",
         loader: ({ params }) =>
-          axios(`http://localhost:3000/course/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <CourseDetails />
-          </PrivateRoute>
-        ),
+          axios(`https://learnosphere-server.vercel.app/course/${params.id}`),
+        element: <CourseDetails />,
       },
       {
         path: "/",
@@ -110,12 +103,16 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "auth",
+    path: "/",
     Component: AuthLayout,
     children: [
-      { index: true, Component: SignIn },
+      { path: "login", Component: SignIn },
       { path: "register", Component: SignUp },
     ],
+  },
+  {
+    path: "*",
+    Component: Error,
   },
 ]);
 

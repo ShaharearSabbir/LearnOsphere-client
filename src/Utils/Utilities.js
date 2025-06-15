@@ -1,5 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const uploadImage = async (image) => {
   const key = import.meta.env.VITE_imgBB_Key;
@@ -55,7 +56,7 @@ export const setRoleOnDB = async (user, setUser, navigate, location) => {
       photoURL: user.photoURL,
     };
     axios
-      .post("http://localhost:3000/user", userData)
+      .post("https://learnosphere-server.vercel.app/user", userData)
       .then((res) => {
         if (res.data.insertedId) {
           setUser({ ...user, ...userData });
@@ -78,7 +79,7 @@ export const setRoleOnDB = async (user, setUser, navigate, location) => {
         });
       });
   } else {
-    console.log("No role selected or dialog dismissed.");
+    ("No role selected or dialog dismissed.");
   }
 };
 

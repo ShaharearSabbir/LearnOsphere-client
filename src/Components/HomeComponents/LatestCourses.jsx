@@ -8,9 +8,9 @@ import CourseCard from "./CourseCard";
 const LatestCourses = () => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    axios(`http://localhost:3000/courses?limit=6`)
+    axios(`https://learnosphere-server.vercel.app/courses?limit=8`)
       .then((res) => setCourses(res.data))
-      .catch((err) => console.log(err.message));
+      .catch((err) => err.message);
   }, []);
   return (
     <div className="my-16 lg:my-30">

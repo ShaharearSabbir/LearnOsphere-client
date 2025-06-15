@@ -19,7 +19,7 @@ const AddItemModal = ({ isOpen, onClose, setNewCategory }) => {
     const description = e.target.description.value;
     const newCategory = { category, description, photoURL };
     axios
-      .post("http://localhost:3000/category", newCategory)
+      .post("https://learnosphere-server.vercel.app/category", newCategory)
       .then((res) => {
         if (res.data.insertedId) {
           setNewCategory(newCategory);

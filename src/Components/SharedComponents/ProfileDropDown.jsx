@@ -3,7 +3,7 @@ import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast } from "../../Utils/Utilities";
 import { Link, NavLink } from "react-router";
 import { HiBars3, HiXMark } from "react-icons/hi2";
-import NavBar from "./NavBar";
+import { motion } from "motion/react";
 
 const ProfileDropDown = ({ links }) => {
   const { user, setUser, logOut } = useContext(AuthContext);
@@ -50,10 +50,10 @@ const ProfileDropDown = ({ links }) => {
         <div className="hidden lg:flex lg:gap-4">
           {!user ? (
             <>
-              <Link className="btn btn-secondary" to="/auth/register">
+              <Link className="btn btn-secondary" to="/register">
                 Register
               </Link>
-              <Link className="btn btn-primary" to="/auth">
+              <Link className="btn btn-primary" to="/login">
                 Login
               </Link>
             </>
@@ -113,7 +113,10 @@ const ProfileDropDown = ({ links }) => {
         </div>
       </div>
 
-      <div
+      <motion.div
+        initial={{ x: 70, y: -50, scale: 0, opacity: 0 }}
+        whileInView={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+        transition={{ duration: 0.2 }}
         className={`${
           isOpen ? "absolute" : "hidden"
         } z-10 top-12 right-0 min-w-40 bg-white p-5 rounded-2xl border-blue-200 border-2`}
@@ -134,17 +137,17 @@ const ProfileDropDown = ({ links }) => {
           ) : (
             <>
               <li>
-                <Link to="/auth/register" className="inline-block mt-3">
+                <Link to="/register" className="inline-block mt-3">
                   Register
                 </Link>
               </li>
               <li>
-                <Link to="/auth">Login</Link>
+                <Link to="/login">Login</Link>
               </li>
             </>
           )}
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 };

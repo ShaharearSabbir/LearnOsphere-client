@@ -18,7 +18,7 @@ const UpdateCourse = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios("http://localhost:3000/categories")
+    axios("https://learnosphere-server.vercel.app/categories")
       .then((res) => {
         setCategories(res.data);
       })
@@ -78,7 +78,10 @@ const UpdateCourse = () => {
         courseData.mentorUID = user.uid;
         courseData.RemainingSeat = courseData.totalSeat;
         axios
-          .put(`http://localhost:3000/course/${course._id}`, courseData)
+          .put(
+            `https://learnosphere-server.vercel.app/course/${course._id}`,
+            courseData
+          )
           .then((res) => {
             if (res.data.modifiedCount) {
               Toast.fire({
@@ -215,6 +218,7 @@ const UpdateCourse = () => {
               </option>
               {categories.map((cat) => (
                 <option
+                  key={cat._id}
                   selected={course.category == cat.category ? true : false}
                   value={cat.category}
                 >

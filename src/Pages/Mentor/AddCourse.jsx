@@ -18,7 +18,7 @@ const AddCourse = () => {
   const [newCategory, setNewCategory] = useState(null);
 
   useEffect(() => {
-    axios("http://localhost:3000/categories")
+    axios("https://learnosphere-server.vercel.app/categories")
       .then((res) => {
         setCategories(res.data);
       })
@@ -77,9 +77,9 @@ const AddCourse = () => {
     courseData.totalSeat = parseInt(courseData.totalSeat);
     courseData.RemainingSeat = parseInt(courseData.RemainingSeat);
 
-    console.log(courseData);
+    courseData;
     axios
-      .post("http://localhost:3000/course", courseData)
+      .post("https://learnosphere-server.vercel.app/course", courseData)
       .then((res) => {
         if (res.data.insertedId) {
           form.reset();
@@ -218,7 +218,9 @@ const AddCourse = () => {
                 Select a category
               </option>
               {categories.map((cat) => (
-                <option value={cat.category}>{cat.category}</option>
+                <option key={cat._id} value={cat.category}>
+                  {cat.category}
+                </option>
               ))}
             </select>
 

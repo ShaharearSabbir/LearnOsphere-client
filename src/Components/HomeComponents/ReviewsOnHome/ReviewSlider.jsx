@@ -6,11 +6,11 @@ import Reviewslide from "./Reviewslide";
 function ReviewSlider() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    axios("http://localhost:3000/reviews")
+    axios("https://learnosphere-server.vercel.app/reviews")
       .then((res) => {
         setReviews(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => err);
   }, []);
 
   const settings = {

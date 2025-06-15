@@ -16,7 +16,7 @@ const Review = ({
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/review/${id}`)
+      .delete(`https://learnosphere-server.vercel.app/review/${id}`)
       .then((res) => {
         if (res.data.deletedCount) {
           setReviews((prevRevs) =>
@@ -28,7 +28,7 @@ const Review = ({
           });
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => err.message);
   };
 
   return (

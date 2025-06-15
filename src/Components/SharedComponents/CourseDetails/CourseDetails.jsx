@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLoaderData } from "react-router";
 import MainCourseDetails from "./MainCourseDetails";
 import SideCourseDetails from "./SideCourseDetails";
@@ -6,8 +6,6 @@ import { motion } from "motion/react";
 import { container } from "../../../animation/animate";
 
 const CourseDetails = () => {
-
-
   const course = useLoaderData().data;
   const { _id } = course;
   return (
