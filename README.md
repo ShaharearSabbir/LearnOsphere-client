@@ -64,4 +64,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 
-Shaharear Rahman SAbbir - imshaharear@gmail.com
+Shaharear Rahman Sabbir - imshaharear@gmail.com
