@@ -7,6 +7,7 @@ import { pricePercentage, Toast } from "../../../Utils/Utilities";
 import icons from "currency-icons";
 import { AuthContext } from "../../../AuthContext/AuthContext";
 import axios from "axios";
+import { Link } from "react-router";
 
 const MainCourseDetails = ({
   _id,
@@ -40,6 +41,12 @@ const MainCourseDetails = ({
   }
 
   const handleEnroll = (courseId, uid, enrolledCourses) => {
+    if (!user) {
+      Toast.fire({
+        icon: "warning",
+        title: `Login to Enroll`,
+      });
+    }
     if (!isEnrolled) {
       if (enrolledCourses.length >= 3) {
         Toast.fire({
@@ -92,7 +99,7 @@ const MainCourseDetails = ({
               {isEnrolled ? (
                 <button
                   onClick={() =>
-                    handleEnroll(_id, user.uid, user.enrolledCourses)
+                    handleEnroll(_id, user?.uid, user?.enrolledCourses)
                   }
                   className="btn btn-secondary-outline"
                 >
@@ -101,15 +108,15 @@ const MainCourseDetails = ({
               ) : (
                 <button
                   onClick={() =>
-                    handleEnroll(_id, user.uid, user.enrolledCourses)
+                    handleEnroll(_id, user?.uid, user?.enrolledCourses)
                   }
-                  className="btn btn-primary-outline disabled:cursor-not-allowed"
-                  disabled={user ? false : true}
+                  className="btn btn-primary-outline"
+                  // disabled={user ? false : true}
                 >
                   Enroll
                 </button>
               )}
-              <p className="text-sm">{remaining} seat available</p>
+              <p className="text-sm text-right">{remaining} seat available</p>
             </>
           ) : (
             <p className="text-red-600 bg-red-100 px-2 py-1 rounded-xl">

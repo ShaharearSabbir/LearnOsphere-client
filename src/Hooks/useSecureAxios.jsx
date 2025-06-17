@@ -1,27 +1,35 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
+import { Toast } from "../Utils/Utilities";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://learnosphere-server.vercel.app/",
+  withCredentials: true,
 });
 
 const useSecureAxios = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { logOut } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (!loading && user?.accessToken) {
-      const requestInterceptor = axiosInstance.interceptors.request.use(
-        (config) => {
-          config.headers.authorization = `bearer ${user.accessToken}`;
-          return config;
-        }
-      );
-      return () => {
-        axiosInstance.interceptors.request.eject(requestInterceptor);
-      };
+  axiosInstance.interceptors.request.use((config) => {
+    return config;
+  });
+
+  axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response && error.response.status === 401) {
+        logOut().then(() =>
+          Toast.fire({
+            icon: "warning",
+            title: "Unauthorized Account or Session Expired",
+          })
+        );
+      }
+      return Promise.reject(error);
     }
-  }, [user, loading]);
+  );
+
   return axiosInstance;
 };
 

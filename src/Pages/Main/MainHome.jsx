@@ -7,13 +7,16 @@ import { container } from "../../animation/animate";
 import LatestCourses from "../../Components/HomeComponents/LatestCourses";
 import PopularCourses from "../../Components/HomeComponents/PopularCourses";
 import TwinBoxes from "../../Components/HomeComponents/TwinBoxes";
-import ReviewsOnHome from "../../Components/HomeComponents/ReviewsOnHome/ReviewsOnHome";
 import TwinBoxesMobile from "../../Components/HomeComponents/TwinBoxesMobile";
 import FAQ from "../../Components/HomeComponents/FAQ";
+import { Helmet } from "react-helmet";
 
 const MainHome = () => {
   return (
     <div className="overflow-hidden my-5 lg:my-12">
+      <Helmet>
+        <title>LearnOsphere</title>
+      </Helmet>
       <motion.div
         variants={container("BTT")}
         initial={"initial"}
@@ -50,8 +53,6 @@ const MainHome = () => {
       >
         <PopularCourses />
       </motion.div>
-
-      <ReviewsOnHome />
 
       <FAQ />
     </div>

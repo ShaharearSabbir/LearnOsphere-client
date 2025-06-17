@@ -3,6 +3,7 @@ import learn from "../../assets/learn.png";
 import certificate from "../../assets/get-certificate.png";
 import { motion } from "motion/react";
 import { container, image } from "../../animation/animate";
+import { Link } from "react-router";
 
 const TwinBoxes = () => {
   const [hoveredBox, setHoveredBox] = useState(null);
@@ -35,7 +36,9 @@ const TwinBoxes = () => {
         <h3 className="text-3xl tracking-tight font-light">
           Earn a <span className="block font-bold">Certificate</span>
         </h3>
-        <button className="btn btn-primary-outline">View Programs</button>
+        <Link to="/courses" className="btn btn-primary-outline">
+          View Programs
+        </Link>
         <motion.img
           variants={image()}
           initial="initial"
@@ -60,7 +63,9 @@ const TwinBoxes = () => {
         <h3 className="text-3xl tracking-tight font-light">
           Best Rated <span className="block font-bold">Courses</span>
         </h3>
-        <button className="btn btn-secondary-outline">View Programs</button>
+        <Link to="/courses" className="btn btn-secondary-outline">
+          View Programs
+        </Link>
         <motion.img
           variants={image()}
           initial="initial"

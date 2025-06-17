@@ -4,6 +4,7 @@ import { Toast, uploadImage } from "../../Utils/Utilities";
 import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet";
 
 const AddBlog = () => {
   const navigate = useNavigate();
@@ -40,6 +41,9 @@ const AddBlog = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Add Blog | LearnOsphere</title>
+      </Helmet>
       <form onSubmit={handlePost} className=" space-y-4">
         <div>
           <label

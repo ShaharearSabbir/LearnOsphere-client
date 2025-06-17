@@ -4,6 +4,7 @@ import underlineImage from "../../assets/line-2-category-2.svg";
 import { underline } from "../../animation/animate";
 import { motion } from "motion/react";
 import CourseCard from "./CourseCard";
+import { Link } from "react-router";
 
 const LatestCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -32,7 +33,9 @@ const LatestCourses = () => {
             </div>
           </h2>
         </div>
-        <button className="btn btn-primary">View All Courses</button>
+        <Link to="/courses" className="btn btn-primary-outline">
+          View All Courses
+        </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {courses.map((course) => (

@@ -7,6 +7,7 @@ import axios from "axios";
 import SocialLogin from "../../Components/AuthComponents/SocialLogin";
 import BrandLogo from "../../Components/SharedComponents/BrandLogo";
 import { warning } from "motion";
+import { Helmet } from "react-helmet";
 
 const SignUp = () => {
   const { createUser, setUser, userInfoUpdate } = useContext(AuthContext);
@@ -122,6 +123,9 @@ const SignUp = () => {
   };
   return (
     <div className="flex-1 flex items-center justify-center min-h-screen py-10 lg:py-20">
+      <Helmet>
+        <title>Register | LearnOsphere</title>
+      </Helmet>
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div className="">
           <BrandLogo />

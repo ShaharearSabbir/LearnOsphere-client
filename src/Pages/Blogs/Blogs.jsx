@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 const Blogs = () => {
   const { user } = useContext(AuthContext);
   const blogs = useLoaderData().data;
   return (
     <section className=" dark:text-gray-800">
+      <Helmet>
+        <title>Blogs | LearnOsphere</title>
+      </Helmet>
       <div className="flex justify-between items-center">
-        <h2 className="primary-title my-16">Blogs</h2>
+        <h2 className="primary-title mb-5">Blogs</h2>
         {user?.role === "mentor" && (
           <Link to="/addBlog" className="btn btn-primary-outline">
             Add Blog

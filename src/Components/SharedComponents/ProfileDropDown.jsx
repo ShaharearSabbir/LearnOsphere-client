@@ -4,22 +4,32 @@ import { Toast } from "../../Utils/Utilities";
 import { Link, NavLink } from "react-router";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 import { motion } from "motion/react";
+import axios from "axios";
 
 const ProfileDropDown = ({ links }) => {
   const { user, setUser, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [menuState, setMenuState] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleSignOut = () => {
     logOut()
       .then(() => {
-        setIsOpen(false);
-        setUser(null);
-        Toast.fire({
-          icon: "warning",
-          title: `See You Again ${user?.displayName || "User"}`,
-        });
+        axios
+          .post(
+            "https://learnosphere-server.vercel.app/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then(() => {
+            setIsOpen(false);
+            setUser(null);
+            Toast.fire({
+              icon: "warning",
+              title: `See You Again ${user?.displayName || "User"}`,
+            });
+          });
       })
       .catch((error) => {
         console.error("Logout error:", error);
@@ -99,11 +109,10 @@ const ProfileDropDown = ({ links }) => {
               className="outline-none text-gray-400 block lg:hidden"
               onClick={(e) => {
                 e.stopPropagation();
-                setMenuState(!menuState);
                 setIsOpen(!isOpen);
               }}
             >
-              {menuState ? (
+              {isOpen ? (
                 <HiXMark className="h-6 w-6" />
               ) : (
                 <HiBars3 className="h-6 w-6" />
@@ -137,7 +146,7 @@ const ProfileDropDown = ({ links }) => {
           ) : (
             <>
               <li>
-                <Link to="/register" className="inline-block mt-3">
+                <Link to="/register" className="inline-block">
                   Register
                 </Link>
               </li>

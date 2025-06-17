@@ -2,8 +2,8 @@ import React, { use, useState } from "react";
 import EnrollmentTableRow from "./EnrollmentTableRow";
 
 const LearnerTable = ({ getDataByUID }) => {
-  const initiallEnrollments = use(getDataByUID);
-  const [enrollments, setEnrollments] = useState(initiallEnrollments);
+  const initialEnrollments = use(getDataByUID);
+  const [enrollments, setEnrollments] = useState(initialEnrollments);
   return (
     <table className="w-full table-auto text-sm text-left">
       <thead className="bg-blue-50 text-gray-600 font-medium border-b border-blue-200">
@@ -15,7 +15,7 @@ const LearnerTable = ({ getDataByUID }) => {
         </tr>
       </thead>
       <tbody className="text-gray-600 *:border-b-1 *:border-blue-300">
-        {enrollments.map((enrollment, idx) => (
+        {enrollments?.map((enrollment, idx) => (
           <EnrollmentTableRow
             key={idx}
             enrollment={enrollment}

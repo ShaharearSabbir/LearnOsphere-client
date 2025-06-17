@@ -5,6 +5,7 @@ import SocialLogin from "../../Components/AuthComponents/SocialLogin";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast } from "../../Utils/Utilities";
 import BrandLogo from "../../Components/SharedComponents/BrandLogo";
+import { Helmet } from "react-helmet";
 
 const SignIn = () => {
   const { loginUSer, user } = useContext(AuthContext);
@@ -40,6 +41,9 @@ const SignIn = () => {
 
   return (
     <div className="flex-1 flex items-center justify-center min-h-screen py-10">
+      <Helmet>
+        <title>Login | LearnOsphere</title>
+      </Helmet>
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div className="">
           <BrandLogo />

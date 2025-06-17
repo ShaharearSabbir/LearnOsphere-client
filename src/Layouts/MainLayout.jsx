@@ -18,7 +18,9 @@ const MainLayout = () => {
             <Loader />
           </div>
         ) : (
-          <Outlet />
+          <div className="my-5 md:my-10 lg:my-10">
+            <Outlet />
+          </div>
         )}
       </div>
       <Footer />

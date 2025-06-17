@@ -13,7 +13,6 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
 import axios from "axios";
-import { useNavigation } from "react-router";
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -37,14 +36,17 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, providerGoogle);
   };
 
   const facebookLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, providerFacebook);
   };
 
   const githubLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, provideGithub);
   };
 
@@ -59,12 +61,21 @@ const AuthProvider = ({ children }) => {
     const unSubs = onAuthStateChanged(auth, (currentUSer) => {
       setUser(currentUSer);
       if (currentUSer) {
+        const userData = { uid: currentUSer.uid };
+        axios
+          .post("https://learnosphere-server.vercel.app/jwt", userData, {
+            withCredentials: true,
+          })
+          .then((res) => console.log("response from jwt", res.data))
+          .catch((err) => console.log("error from jtw", err));
         loadUserData(currentUSer);
       }
       setLoading(false);
     });
     return () => unSubs();
   }, []);
+
+  console.log(user);
 
   const loadUserData = (currentUSer) => {
     axios(

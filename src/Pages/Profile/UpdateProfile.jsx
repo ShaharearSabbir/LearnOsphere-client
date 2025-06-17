@@ -3,6 +3,7 @@ import { Toast, uploadImage } from "../../Utils/Utilities";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router";
+import { Helmet } from "react-helmet";
 
 const UpdateProfile = () => {
   const location = useLocation();
@@ -66,6 +67,9 @@ const UpdateProfile = () => {
 
   return (
     <div className="my-10">
+      <Helmet>
+        <title>Update Profile | LearnOsphere</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-center my-5">User Profile</h1>
       <form onSubmit={handleUpdateProfile} className="space-y-5">
         <div>

@@ -19,6 +19,8 @@ import Enrollments from "../Pages/Learner/Enrollments";
 import Error from "../Pages/Error";
 import Blogs from "../Pages/Blogs/Blogs";
 import AddBlog from "../Pages/Blogs/AddBlog";
+import AllCategories from "../Components/HomeComponents/AllCategories";
+import CourseByCategory from "../Components/HomeComponents/CourseByCategory";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,20 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: MainHome },
       { path: "courses", Component: Courses },
+      {
+        path: "allCategories",
+        loader: () =>
+          axios("https://learnosphere-server.vercel.app/categories"),
+        Component: AllCategories,
+      },
+      {
+        path: "category/:cat",
+        loader: ({ params }) =>
+          axios(
+            `https://learnosphere-server.vercel.app/courses?filterBy=${params.cat}`
+          ),
+        Component: CourseByCategory,
+      },
       {
         path: "blogs",
         loader: () => axios("https://learnosphere-server.vercel.app/blogs"),

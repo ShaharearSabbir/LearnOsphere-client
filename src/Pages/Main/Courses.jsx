@@ -5,6 +5,7 @@ import underlineImage from "../../assets/line-2-category-2.svg";
 import { motion } from "motion/react";
 import CourseCard from "../../Components/HomeComponents/CourseCard";
 import Loader from "../../Components/SharedComponents/Loader";
+import { Helmet } from "react-helmet";
 
 const Courses = () => {
   const [sortBy, setSortBy] = useState("createdAt");
@@ -39,6 +40,9 @@ const Courses = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Courses | LearnOsphere</title>
+      </Helmet>
       <h2 className="primary-title text-center">
         Most demanding{" "}
         <div className="primary-title-second">

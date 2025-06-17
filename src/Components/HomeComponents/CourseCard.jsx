@@ -34,7 +34,7 @@ const CourseCard = ({ course }) => {
         />
       </div>
       <motion.div
-        initial={{ y: 60 }}
+        initial={{ y: 65 }}
         whileHover={{ y: 0 }}
         transition={{ duration: 0.3 }}
         className="space-y-3 mt-5 lg:absolute lg:bottom-0 lg:right-0 lg:left-0 lg:p-5 bg-white"
@@ -98,7 +98,7 @@ const CourseCard = ({ course }) => {
         </div>
         <Link
           to={`/courseDetails/${course._id}`}
-          className="btn btn-primary w-full block text-center"
+          className="btn btn-primary-outline w-full block text-center"
         >
           View Details
         </Link>

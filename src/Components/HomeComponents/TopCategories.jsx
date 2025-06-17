@@ -4,6 +4,7 @@ import CategoryCard from "./CategoryCard";
 import underlineImage from "../../assets/line-2-category-2.svg";
 import { motion } from "motion/react";
 import { underline } from "../../animation/animate";
+import { Link } from "react-router";
 
 const TopCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -33,10 +34,14 @@ const TopCategories = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-6 lg:my-12">
         {categories.map((category) => (
-          <CategoryCard key={category._id} category={category} />
+          <Link to={`/category/${category.category}`}>
+            <CategoryCard key={category._id} category={category} />
+          </Link>
         ))}
       </div>
-      <button className="btn btn-primary">All Categories</button>
+      <Link to="/allCategories" className="btn btn-primary-outline">
+        All Categories
+      </Link>
     </div>
   );
 };

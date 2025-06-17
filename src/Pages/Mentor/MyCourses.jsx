@@ -5,6 +5,7 @@ import useSecureAPI from "../../Hooks/useSecureAPI";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import Loader from "../../Components/SharedComponents/Loader";
 import CoursesTable from "../../Components/MentorComponents/CoursesTable";
+import { Helmet } from "react-helmet";
 
 const MyCourses = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,9 @@ const MyCourses = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 my-16 md:px-8">
+      <Helmet>
+        <title>My Courses | LearnOsphere</title>
+      </Helmet>
       <div className="justify-between items-center md:flex">
         <div className="max-w-lg">
           <h2 className="text-3xl font-semibold">My Courses</h2>

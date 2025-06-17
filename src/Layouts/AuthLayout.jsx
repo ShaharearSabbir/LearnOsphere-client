@@ -54,7 +54,7 @@ const AuthLayout = () => {
         ></div>
       </div>
       <div className="hidden lg:block lg:w-1/2"></div>
-      <div className=" lg:w-1/2 overflow-y-auto">
+      <div className=" lg:w-1/2 mx-auto overflow-y-auto">
         <Outlet />
       </div>
     </main>
