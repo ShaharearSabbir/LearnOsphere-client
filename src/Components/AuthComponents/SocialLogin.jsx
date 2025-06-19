@@ -2,68 +2,30 @@ import React, { useContext } from "react";
 import { FaFacebookSquare, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../AuthContext/AuthContext";
-import axios from "axios";
-import { setRoleOnDB, Toast } from "../../Utils/Utilities";
+import { Toast } from "../../Utils/Utilities";
 import { useNavigate } from "react-router";
 
 const SocialLogin = ({ location }) => {
   const navigate = useNavigate();
-  const { googleLogin, setUser, facebookLogin, githubLogin } =
-    useContext(AuthContext);
-
-  // const handleFacebookLogin = async () => {
-  //   facebookLogin().then((currentUSer) => {
-  //     const uid = currentUSer.user.uid;
-  //     axios(`https://learnosphere-server.vercel.app/user/${uid}`).then(
-  //       (res) => {
-  //         if (!res.data) {
-  //           setRoleOnDB(currentUSer.user, setUser, navigate, location);
-  //         } else {
-  //           navigate(location.state || "/");
-  //           Toast.fire({
-  //             icon: "success",
-  //             title: `Welcome Back ${currentUSer.user.displayName}!`,
-  //           });
-  //         }
-  //       }
-  //     );
-  //   });
-  // };
+  const { googleLogin, githubLogin } = useContext(AuthContext);
 
   const handleGoogleLogin = async () => {
     googleLogin().then((currentUSer) => {
-      const uid = currentUSer.user.uid;
-      axios(`https://learnosphere-server.vercel.app/user/${uid}`).then(
-        (res) => {
-          if (!res.data) {
-            setRoleOnDB(currentUSer.user, setUser, navigate, location);
-          } else {
-            navigate(location.state || "/");
-            Toast.fire({
-              icon: "success",
-              title: `Welcome Back ${currentUSer.user.displayName}!`,
-            });
-          }
-        }
-      );
+      navigate(location.state || "/");
+      Toast.fire({
+        icon: "success",
+        title: `Welcome Back ${currentUSer.user.displayName}!`,
+      });
     });
   };
+
   const handleGithubLogin = async () => {
     githubLogin().then((currentUSer) => {
-      const uid = currentUSer.user.uid;
-      axios(`https://learnosphere-server.vercel.app/user/${uid}`).then(
-        (res) => {
-          if (!res.data) {
-            setRoleOnDB(currentUSer.user, setUser, navigate, location);
-          } else {
-            navigate(location.state || "/");
-            Toast.fire({
-              icon: "success",
-              title: `Welcome Back ${currentUSer.user.displayName}!`,
-            });
-          }
-        }
-      );
+      navigate(location.state || "/");
+      Toast.fire({
+        icon: "success",
+        title: `Welcome Back ${currentUSer.user.displayName}!`,
+      });
     });
   };
 

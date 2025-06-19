@@ -15,7 +15,7 @@ const NavBar = () => {
       <li className="text-gray-600 hover:text-gray-900">
         <NavLink to="/courses">Courses</NavLink>
       </li>
-      {user?.role === "mentor" && (
+      {user && (
         <>
           <li className="text-gray-600 hover:text-gray-900">
             <NavLink to={`/myCourses`}>My Courses</NavLink>
@@ -23,10 +23,6 @@ const NavBar = () => {
           <li className="text-gray-600 hover:text-gray-900">
             <NavLink to="/addCourse">Add Course</NavLink>
           </li>
-        </>
-      )}
-      {user?.role === "learner" && (
-        <>
           <li className="text-gray-600 hover:text-gray-900">
             <NavLink to="/enrollments">My Enrollments</NavLink>
           </li>

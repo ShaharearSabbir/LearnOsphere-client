@@ -13,7 +13,7 @@ const Blogs = () => {
       </Helmet>
       <div className="flex justify-between items-center">
         <h2 className="primary-title mb-5">Blogs</h2>
-        {user?.role === "mentor" && (
+        {user && (
           <Link to="/addBlog" className="btn btn-primary-outline">
             Add Blog
           </Link>

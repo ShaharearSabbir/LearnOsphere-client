@@ -22,7 +22,6 @@ const Profile = () => {
         {user.displayName || "No Name Founded"}
       </h3>
       <p>Email: {user.email || "No Email Found"}</p>
-      <p>Role: {user.role || "No Role Selected Yet"}</p>
       <Link
         to={`/updateProfile`}
         state={location.pathname}

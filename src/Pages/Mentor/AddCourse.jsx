@@ -74,11 +74,9 @@ const AddCourse = () => {
     courseData.mentorName = user.displayName;
     courseData.mentorEmail = user.email;
     courseData.mentorUID = user.uid;
-    courseData.RemainingSeat = courseData.totalSeat;
     courseData.totalSeat = parseInt(courseData.totalSeat);
-    courseData.RemainingSeat = parseInt(courseData.RemainingSeat);
+    courseData.RemainingSeat = parseInt(courseData.totalSeat);
 
-    courseData;
     axios
       .post("https://learnosphere-server.vercel.app/course", courseData)
       .then((res) => {
@@ -96,7 +94,7 @@ const AddCourse = () => {
             confirmButtonText: "Yes",
           }).then((result) => {
             if (!result.isConfirmed) {
-              navigate(`/myCourses/${user.uid}`);
+              navigate(`/myCourses`);
             }
           });
         }

@@ -38,8 +38,7 @@ const UpdateProfile = () => {
     }
     if (
       userData.displayName !== user.displayName ||
-      userData.photoURL !== user.photoURL ||
-      userData.role !== user.role
+      userData.photoURL !== user.photoURL
     ) {
       axios
         .put(
@@ -72,21 +71,6 @@ const UpdateProfile = () => {
       </Helmet>
       <h1 className="text-3xl font-bold text-center my-5">User Profile</h1>
       <form onSubmit={handleUpdateProfile} className="space-y-5">
-        <div>
-          <label className="font-medium">Role</label>
-          <select
-            defaultValue={user.role}
-            name="role"
-            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-          >
-            <option value="learner" selected>
-              Learner
-            </option>
-            <option value="mentor">Mentor</option>
-          </select>
-        </div>
-        <div></div>
-
         <div>
           <label className="font-medium">Name</label>
           <input

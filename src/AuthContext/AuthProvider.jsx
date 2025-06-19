@@ -81,9 +81,8 @@ const AuthProvider = ({ children }) => {
     axios(
       `https://learnosphere-server.vercel.app/user/${currentUSer.uid}`
     ).then((res) => {
-      const role = res.data.role;
       const enrolledCourses = res.data.enrolledCourseIds;
-      setUser((prevUSer) => ({ ...prevUSer, role, enrolledCourses }));
+      setUser((prevUSer) => ({ ...prevUSer, enrolledCourses }));
     });
   };
 

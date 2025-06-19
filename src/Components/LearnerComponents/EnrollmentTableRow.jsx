@@ -34,8 +34,8 @@ const EnrollmentTableRow = ({ enrollment, idx, setEnrollments }) => {
                   prevEnrollment.filter((enrollment) => enrollment._id !== id)
                 );
                 Swal.fire({
-                  title: "Deleted!",
-                  text: "Your file has been deleted.",
+                  title: "Discarded!",
+                  text: "Your Enrollment has been discarded.",
                   icon: "success",
                 });
               }
