@@ -1,4 +1,4 @@
-# LearnOsphere
+# LearnOsphere - Client
 
 [![Live Website](https://img.shields.io/badge/Live%20Website-Available-brightgreen)](https://learn-osphere.web.app/)
 
