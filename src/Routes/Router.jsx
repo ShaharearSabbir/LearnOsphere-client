@@ -21,6 +21,8 @@ import Blogs from "../Pages/Blogs/Blogs";
 import AddBlog from "../Pages/Blogs/AddBlog";
 import AllCategories from "../Components/HomeComponents/AllCategories";
 import CourseByCategory from "../Components/HomeComponents/CourseByCategory";
+import About from "../Pages/Main/About";
+import Contact from "../Pages/Main/Contact";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: MainHome },
       { path: "courses", Component: Courses },
+      { path: "about", Component: About },
+      { path: "contact", Component: Contact },
       {
         path: "allCategories",
         loader: () =>

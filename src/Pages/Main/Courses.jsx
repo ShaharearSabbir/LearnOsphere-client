@@ -6,27 +6,34 @@ import { motion } from "motion/react";
 import CourseCard from "../../Components/HomeComponents/CourseCard";
 import Loader from "../../Components/SharedComponents/Loader";
 import { Helmet } from "react-helmet";
+import CoursesTableDisplay from "../../Components/HomeComponents/CoursesTableDisplay";
+import usePageTop from "../../Hooks/usePageTop";
+import OnTitleBar from "../../Components/SharedComponents/OnTitleBar";
+import Title from "../../Components/SharedComponents/Title";
 
 const Courses = () => {
   const [sortBy, setSortBy] = useState("createdAt");
   const [orderBy, setOrderBy] = useState("dsc");
   const [filterBy, setFilterBy] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setloading] = useState(true);
+  const [viewMode, setViewMode] = useState("card");
+  usePageTop();
 
-  let url = `https://learnosphere-server.vercel.app/courses?sortBy=${sortBy}&orderBy=${orderBy}&filterBy=${filterBy}`;
+  let url = `https://learnosphere-server.vercel.app/courses?sortBy=${sortBy}&orderBy=${orderBy}&filterBy=${filterBy}&search=${searchQuery}`;
 
   useEffect(() => {
     setloading(true);
     axios(url)
       .then((res) => {
-        res.data;
         setCourses(res.data);
         setloading(false);
       })
       .catch((err) => {
-        err;
+        console.error("Error fetching courses:", err);
+        setloading(false);
       });
   }, [url]);
 
@@ -34,32 +41,60 @@ const Courses = () => {
     axios(`https://learnosphere-server.vercel.app/categories`)
       .then((res) => setCategories(res.data))
       .catch((err) => {
-        err;
+        console.error("Error fetching categories:", err);
       });
   }, []);
 
   return (
     <>
-      <Helmet>
-        <title>Courses | LearnOsphere</title>
-      </Helmet>
-      <h2 className="primary-title text-center">
-        Most demanding{" "}
-        <div className="primary-title-second">
-          <span>Categories</span>
-          <motion.img
-            variants={underline()}
-            initial="initial"
-            whileInView="animate"
-            className="absolute -bottom-1 right-0 -z-10"
-            src={underlineImage}
-            alt=""
-          />
-        </div>
-      </h2>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 my-16">
-        <aside className="lg:col-span-3 rounded-2xl h-fit lg:sticky lg:top-24">
+      <OnTitleBar>Courses</OnTitleBar>
+
+      <Title
+        secondary="All Courses"
+        title="Most Demanding"
+        utitle="Courses"
+        center={true}
+      />
+
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 my-16">
+        <aside className="lg:col-span-3 rounded-2xl h-fit lg:sticky lg:top-24 p-4  border border-blue-200">
           <div>
+            <h5 className="font-bold">Search Courses</h5>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full my-2 bg-blue-100 px-4 py-1 rounded-xl mb-4"
+            />
+
+            {/* View Toggle Buttons */}
+            <div className="mb-4">
+              <h5 className="font-bold">View As</h5>
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={() => setViewMode("card")}
+                  className={`px-4 py-2 rounded-lg font-semibold transition duration-150 ease-in-out ${
+                    viewMode === "card"
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                >
+                  Card View
+                </button>
+                <button
+                  onClick={() => setViewMode("table")}
+                  className={`px-4 py-2 rounded-lg font-semibold transition duration-150 ease-in-out ${
+                    viewMode === "table"
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                >
+                  Table View
+                </button>
+              </div>
+            </div>
+
             <h5 className="font-bold">Order by</h5>
             <select
               defaultValue={orderBy}
@@ -89,18 +124,30 @@ const Courses = () => {
               <option value="free">Free</option>
               <option value="price">Paid</option>
               {categories.map((cat) => (
-                <option key={cat._id}>{cat.category}</option>
+                <option key={cat._id} value={cat.category}>
+                  {cat.category}
+                </option>
               ))}
             </select>
           </div>
         </aside>
-        <section className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <section className="lg:col-span-9">
           {loading ? (
-            <div className="col-span-3 min-h-[60vh] flex justify-center items-center">
+            <div className="col-span-full min-h-[60vh] flex justify-center items-center">
               <Loader />
             </div>
+          ) : courses.length === 0 ? (
+            <div className="col-span-full text-center text-gray-600 text-xl min-h-[60vh] flex justify-center items-center">
+              No courses found matching your criteria.
+            </div>
+          ) : viewMode === "card" ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {courses.map((course) => (
+                <CourseCard key={course._id} course={course} />
+              ))}
+            </div>
           ) : (
-            courses.map((course) => <CourseCard course={course} />)
+            <CoursesTableDisplay courses={courses} />
           )}
         </section>
       </div>

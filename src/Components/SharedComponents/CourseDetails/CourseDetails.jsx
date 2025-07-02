@@ -5,8 +5,10 @@ import SideCourseDetails from "./SideCourseDetails";
 import { motion } from "motion/react";
 import { container } from "../../../animation/animate";
 import { Helmet } from "react-helmet";
+import usePageTop from "../../../Hooks/usePageTop";
 
 const CourseDetails = () => {
+  usePageTop();
   const course = useLoaderData().data;
   const { _id } = course;
   return (

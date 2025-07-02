@@ -40,11 +40,11 @@ const CourseCard = ({ course }) => {
         className="space-y-3 mt-5 lg:absolute lg:bottom-0 lg:right-0 lg:left-0 lg:p-5 bg-white"
       >
         <div className="flex justify-between">
-          <p className="py-1 px-2 bg-blue-100 text-gray-600 rounded-lg w-fit">
+          <p className="py-1 px-2 bg-blue-100 text-blue-600 rounded-lg w-fit">
             {course.category}
           </p>
           {!course.free && (
-            <p className="py-1 px-2 bg-green-100 text-green-600 rounded-lg w-fit">
+            <p className="py-1 px-2 bg-amber-100 text-amber-500 rounded-lg w-fit">
               -{discountPercentage}%
             </p>
           )}

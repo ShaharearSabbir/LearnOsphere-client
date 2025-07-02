@@ -1,10 +1,10 @@
 import React, { use, useState } from "react";
 import EnrollmentTableRow from "./EnrollmentTableRow";
-
+import {Link} from "react-router"
 const LearnerTable = ({ getDataByUID }) => {
   const initialEnrollments = use(getDataByUID);
   const [enrollments, setEnrollments] = useState(initialEnrollments);
-  return (
+  return enrollments.length !== 0 ? (
     <table className="w-full table-auto text-sm text-left">
       <thead className="bg-blue-50 text-gray-600 font-medium border-b border-blue-200">
         <tr>
@@ -25,6 +25,13 @@ const LearnerTable = ({ getDataByUID }) => {
         ))}
       </tbody>
     </table>
+  ) : (
+    <div className="text-center p-5 space-y-3">
+      <h4 className="text-2xl"> Start Learning Today!</h4>
+      <Link className="btn btn-primary" to="/courses">
+        Courses
+      </Link>
+    </div>
   );
 };
 

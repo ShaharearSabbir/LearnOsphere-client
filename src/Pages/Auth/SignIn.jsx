@@ -5,9 +5,11 @@ import SocialLogin from "../../Components/AuthComponents/SocialLogin";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Toast } from "../../Utils/Utilities";
 import BrandLogo from "../../Components/SharedComponents/BrandLogo";
-import { Helmet } from "react-helmet";
+import usePageTop from "../../Hooks/usePageTop";
+import OnTitleBar from "../../Components/SharedComponents/OnTitleBar";
 
 const SignIn = () => {
+  usePageTop();
   const { loginUSer, user } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
@@ -41,9 +43,7 @@ const SignIn = () => {
 
   return (
     <div className="flex-1 flex items-center justify-center min-h-screen py-10">
-      <Helmet>
-        <title>Login | LearnOsphere</title>
-      </Helmet>
+      <OnTitleBar>Login</OnTitleBar>
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div className="">
           <BrandLogo />

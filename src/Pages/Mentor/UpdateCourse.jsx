@@ -7,8 +7,11 @@ import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import usePageTop from "../../Hooks/usePageTop";
+import OnTitleBar from "../../Components/SharedComponents/OnTitleBar";
 
 const UpdateCourse = () => {
+  usePageTop();
   const course = useLoaderData().data;
   const location = useLocation();
   const navigate = useNavigate();
@@ -108,10 +111,8 @@ const UpdateCourse = () => {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center min-h-screen py-10 lg:py-20">
-      <Helmet>
-        <title>Update Course | LearnOsphere</title>
-      </Helmet>
+    <div className="flex items-center justify-center min-h-screen py-10 lg:py-20">
+      <OnTitleBar>Update Course</OnTitleBar>
       <div className="w-full max-w-md space-y-8 px-4 bg-white text-gray-600 sm:px-0">
         <div>
           <div className="mt-5 space-y-2">

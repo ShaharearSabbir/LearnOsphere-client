@@ -5,6 +5,7 @@ import underlineImage from "../../assets/line-2-category-2.svg";
 import { motion } from "motion/react";
 import { underline } from "../../animation/animate";
 import { Link } from "react-router";
+import Title from "../SharedComponents/Title";
 
 const TopCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -15,24 +16,13 @@ const TopCategories = () => {
   }, []);
   return (
     <div className="my-16 lg:my-30 text-center">
-      <div className="text-center my-5 lg:my-12">
-        <h4 className="secondary-title">Top Categories</h4>
-        <h2 className="primary-title">
-          Most demanding{" "}
-          <div className="primary-title-second">
-            <span>Categories</span>
-            <motion.img
-              variants={underline()}
-              initial={`initial`}
-              whileInView={`animate`}
-              className="absolute -bottom-1 right-0 -z-10"
-              src={underlineImage}
-              alt=""
-            />
-          </div>
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-6 lg:my-12">
+      <Title
+        secondary="Top Categories"
+        title="Most demanding"
+        utitle="Categories"
+        center={true}
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-6 lg:my-12">
         {categories.map((category) => (
           <Link to={`/category/${category.category}`}>
             <CategoryCard key={category._id} category={category} />

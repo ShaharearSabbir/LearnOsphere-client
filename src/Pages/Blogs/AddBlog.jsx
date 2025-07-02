@@ -4,9 +4,10 @@ import { Toast, uploadImage } from "../../Utils/Utilities";
 import axios from "axios";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { useNavigate } from "react-router";
-import { Helmet } from "react-helmet";
+import OnTitleBar from "../../Components/SharedComponents/OnTitleBar";
 
 const AddBlog = () => {
+  usePageTop();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const editor = useRef(null);
@@ -41,9 +42,7 @@ const AddBlog = () => {
   };
   return (
     <div>
-      <Helmet>
-        <title>Add Blog | LearnOsphere</title>
-      </Helmet>
+      <OnTitleBar>Add Blog</OnTitleBar>
       <form onSubmit={handlePost} className=" space-y-4">
         <div>
           <label

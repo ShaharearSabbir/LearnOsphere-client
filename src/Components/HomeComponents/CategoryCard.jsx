@@ -4,7 +4,7 @@ import { image } from "../../animation/animate";
 
 const CategoryCard = ({ category }) => {
   return (
-    <div className="p-5 border-2 border-blue-300 rounded-2xl hover:shadow-2xl">
+    <div className="p-5 border-2 border-blue-200 rounded-2xl hover:shadow-2xl">
       <div className="overflow-hidden rounded-2xl">
         <motion.img
           variants={image()}

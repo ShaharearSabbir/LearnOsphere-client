@@ -6,22 +6,22 @@ import { AuthContext } from "../../AuthContext/AuthContext";
 import Loader from "../../Components/SharedComponents/Loader";
 import CoursesTable from "../../Components/MentorComponents/CoursesTable";
 import { Helmet } from "react-helmet";
+import usePageTop from "../../Hooks/usePageTop";
+import OnTitleBar from "../../Components/SharedComponents/OnTitleBar";
+import Title from "../../Components/SharedComponents/Title";
 
 const MyCourses = () => {
+  usePageTop();
   const { user } = useContext(AuthContext);
   const { getDataByUID } = useSecureAPI();
   const location = useLocation();
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 my-16 md:px-8">
-      <Helmet>
-        <title>My Courses | LearnOsphere</title>
-      </Helmet>
+    <div className="container mx-auto px-4 my-16 md:px-8 min-h-screen">
+      <OnTitleBar>My Courses</OnTitleBar>
       <div className="justify-between items-center md:flex">
-        <div className="max-w-lg">
-          <h2 className="text-3xl font-semibold">My Courses</h2>
-        </div>
-        <div className="mt-3 md:mt-0">
+        <Title secondary="My Courses" title="My Released" utitle="Courses" />
+        <div className="mt-3 md:mt-0 text-center">
           <Link
             state={location.pathname}
             to="/addCourse"

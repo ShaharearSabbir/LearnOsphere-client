@@ -15,6 +15,9 @@ const NavBar = () => {
       <li className="text-gray-600 hover:text-gray-900">
         <NavLink to="/courses">Courses</NavLink>
       </li>
+      <li className="text-gray-600 hover:text-gray-900">
+        <NavLink to="/about">About Us</NavLink>
+      </li>
       {user && (
         <>
           <li className="text-gray-600 hover:text-gray-900">
@@ -31,12 +34,15 @@ const NavBar = () => {
       <li className="text-gray-600 hover:text-gray-900">
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
+      <li className="text-gray-600 hover:text-gray-900">
+        <NavLink to="/contact">Contact Us</NavLink>
+      </li>
     </>
   );
 
   return (
-    <div className="border-b-2 border-blue-200 lg:sticky top-0 z-100 bg-[#FFFFFFDF]">
-      <nav className="flex justify-between items-center py-3 px-4 max-w-screen-xl mx-auto">
+    <div className="shadow shadow-blue-200 lg:sticky top-0 z-100 bg-[#FFFFFFDF]">
+      <nav className="flex justify-between items-center py-3 px-4 container mx-auto">
         <div className="flex-1">
           <Link to="/" className="flex gap-2">
             <BrandLogo />

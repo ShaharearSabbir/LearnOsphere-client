@@ -4,8 +4,10 @@ import { AuthContext } from "../../AuthContext/AuthContext";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
+import usePageTop from "../../Hooks/usePageTop";
 
 const UpdateProfile = () => {
+  usePageTop();
   const location = useLocation();
   const navigate = useNavigate();
   const { user, setUser, userInfoUpdate } = useContext(AuthContext);

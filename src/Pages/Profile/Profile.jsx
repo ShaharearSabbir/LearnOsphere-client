@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { Link, useLocation } from "react-router";
 import { Helmet } from "react-helmet";
+import usePageTop from "../../Hooks/usePageTop";
 
 const Profile = () => {
+  usePageTop();
   const location = useLocation();
   const { user } = useContext(AuthContext);
 

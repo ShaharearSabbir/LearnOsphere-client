@@ -9,14 +9,14 @@ import PopularCourses from "../../Components/HomeComponents/PopularCourses";
 import TwinBoxes from "../../Components/HomeComponents/TwinBoxes";
 import TwinBoxesMobile from "../../Components/HomeComponents/TwinBoxesMobile";
 import FAQ from "../../Components/HomeComponents/FAQ";
-import { Helmet } from "react-helmet";
+import OnTitleBar from "../../Components/SharedComponents/OnTitleBar";
+import usePageTop from "../../Hooks/usePageTop";
 
 const MainHome = () => {
+  usePageTop();
   return (
-    <div className="overflow-hidden my-5 lg:my-12">
-      <Helmet>
-        <title>LearnOsphere</title>
-      </Helmet>
+    <div className="overflow-hidden my-5 lg:mb-12 -mt-3 lg:-mt-5">
+      <OnTitleBar>Home</OnTitleBar>
       <motion.div
         variants={container("BTT")}
         initial={"initial"}

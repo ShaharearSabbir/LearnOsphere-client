@@ -4,7 +4,8 @@ import MyCourseTableRow from "./MyCourseTableRow";
 const CoursesTable = ({ getDataByUID }) => {
   const initialCourses = use(getDataByUID);
   const [courses, setCourses] = useState(initialCourses);
-  return (
+
+  return courses.length !== 0 ? (
     <table className="w-full table-auto text-sm text-left">
       <thead className="bg-blue-50 text-gray-600 font-medium border-b">
         <tr>
@@ -20,6 +21,8 @@ const CoursesTable = ({ getDataByUID }) => {
         ))}
       </tbody>
     </table>
+  ) : (
+    <h4 className="text-2xl text-center p-5">Release Your First Course!</h4>
   );
 };
 

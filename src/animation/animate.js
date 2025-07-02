@@ -39,3 +39,25 @@ export const image = () => ({
   initial: { scale: 1 },
   animate: { scale: 1.1 },
 });
+
+export const expandCollapse = {
+  collapsed: {
+    height: 0,
+    opacity: 0,
+    overflow: "hidden",
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+  open: {
+    height: "auto",
+    opacity: 1,
+    overflow: "visible",
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      when: "beforeChildren",
+    },
+  },
+};
