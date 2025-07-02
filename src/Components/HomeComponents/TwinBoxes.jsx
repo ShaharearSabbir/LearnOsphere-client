@@ -21,7 +21,7 @@ const TwinBoxes = () => {
   const { left: leftBoxWidth, right: rightBoxWidth } = getBoxWidths();
 
   return (
-    <div className="flex w-full gap-6 lg:gap-10 justify-center items-center">
+    <div className="flex w-full gap-6 lg:gap-10 justify-center items-center overflow-hidden">
       <motion.div
         variants={container("LTR")}
         initial="initial"

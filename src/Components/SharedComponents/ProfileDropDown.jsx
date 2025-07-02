@@ -69,7 +69,7 @@ const ProfileDropDown = ({ links }) => {
             </>
           ) : (
             <button
-              className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-blue-200 ring-2 lg:focus:ring-blue-600 hidden lg:inline"
+              className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-blue-200 ring-2 lg:hover:ring-blue-600 lg:focus:ring-blue-600 hidden lg:inline cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsOpen(!isOpen);
@@ -136,6 +136,15 @@ const ProfileDropDown = ({ links }) => {
             <>
               <li>
                 <NavLink to={`/profile`}>Profile</NavLink>
+              </li>
+              <li className="text-gray-600 hover:text-gray-900">
+                <NavLink to={`/myCourses`}>My Courses</NavLink>
+              </li>
+              <li className="text-gray-600 hover:text-gray-900">
+                <NavLink to="/addCourse">Add Course</NavLink>
+              </li>
+              <li className="text-gray-600 hover:text-gray-900">
+                <NavLink to="/enrollments">My Enrollments</NavLink>
               </li>
               <li>
                 <Link onClick={handleSignOut} className="cursor-pointer">
